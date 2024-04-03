@@ -19,7 +19,7 @@ all					:	$(NAME)
 -include 				$(DEPENDENCIES)
 
 $(BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
-	@$(MKDIR) -p $(@D)
+	@$(MKDIR) $(@D)
 	$(CC) $(CFLAGS) -o $@ -c	$<
 
 $(NAME)				:	$(OBJECTS)
