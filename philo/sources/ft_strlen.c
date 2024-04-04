@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/04 16:50:31 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/04 17:23:38 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/04 17:25:24 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int agrc, char **argv)
+size_t	ft_strlen(char *str)
 {
-	t_philos	philos;
+	size_t	size;
 
-	return ()
+	size = 0;
+	while (str[size])
+		size++;
+	return (size);
 }

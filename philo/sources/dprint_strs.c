@@ -1,20 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   dprint_strs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/04 16:50:31 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/04 17:22:27 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/04 17:31:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int agrc, char **argv)
+static size_t	strs_size(char **strs)
 {
-	t_philos	philos;
+	size_t	i;
+	size_t	size;
 
-	return ()
+	i = 0;
+	size = 0;
+	while (strs[i])
+		size += ft_strlen(strs[i++]);
+	return (size);
+}
+
+static char	*join_strs(char **strs)
+{
+	size_t	size;
+	char	*str;
+
+	size = strs_size(strs);
+	str = malloc(sizeof(char) * size);
+}
+
+void	dprint_strs(char **strs)
+{
+	char	*str;
+
+	str = join_strs(strs);
+	if (str)
+	{
+
+		free(str);
+	}
 }
