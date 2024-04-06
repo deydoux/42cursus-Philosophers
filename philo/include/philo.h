@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 16:51:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/06 16:55:27 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
-# define ERR_PUTSTRS	"ft_putstrs_fd: Cannot allocate memory"
+# define ERR_PUTSTRS	"ft_putstrs_fd: Cannot allocate memory\n"
 # define MIN_ARGC		5
 # define MAX_ARGC		6
 # define USAGE			" number_of_philosophers time_to_die time_to_eat\
