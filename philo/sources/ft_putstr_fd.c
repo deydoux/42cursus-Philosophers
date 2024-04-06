@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 15:50:05 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/06 15:06:20 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/06 15:55:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(const char *str, int fd)
 {
-	t_philos	philos;
-
-	init_philos(argc, argv, &philos);
+	if (str)
+		write(fd, str, ft_strlen(str));
 }

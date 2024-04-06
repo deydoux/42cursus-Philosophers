@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/04 17:22:16 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/06 16:04:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	safe_atoul(char *str, unsigned long *n)
 
 	tmp = 0;
 	*n = 0;
-	while ('0' <= *str && str <= '9')
+	while ('0' <= *str && *str <= '9')
 	{
 		tmp = tmp * 10 + *str++ - '0';
 		if (*n != tmp / 10)
@@ -37,7 +37,7 @@ bool	init_philos(int argc, char **argv, t_philos *philos)
 		|| safe_atoul(argv[4], &philos->sleep)
 		|| (argc == 6 && safe_atoul(argv[6], &philos->max_eat)))
 	{
-
+		ft_putstrs_fd((t_strs){argv[0], USAGE, NULL}, STDERR_FILENO);
 		return (true);
 	}
 	return (false);

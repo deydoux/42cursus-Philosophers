@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 15:50:05 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/06 15:48:37 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/06 15:48:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_philos	philos;
+	size_t	dst_len;
+	size_t	src_len;
 
-	init_philos(argc, argv, &philos);
+	dst_len = ft_strlen(dst);
+	if (size <= dst_len)
+		return (ft_strlen(src) + size);
+	src_len = 0;
+	while (dst_len + src_len < size - 1 && src[src_len])
+	{
+		dst[dst_len + src_len] = src[src_len];
+		src_len++;
+	}
+	dst[dst_len + src_len] = 0;
+	while (src[src_len])
+		src_len++;
+	return (dst_len + src_len);
 }

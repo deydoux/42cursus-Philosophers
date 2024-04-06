@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dprint_strs.c                                      :+:      :+:    :+:   */
+/*   ft_putstrs_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:22:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/04 17:31:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/06 16:04:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static size_t	strs_size(char **strs)
+static size_t	strslen(t_strs strs)
 {
 	size_t	i;
 	size_t	size;
@@ -24,23 +24,30 @@ static size_t	strs_size(char **strs)
 	return (size);
 }
 
-static char	*join_strs(char **strs)
+static char	*join_strs(t_strs strs)
 {
 	size_t	size;
 	char	*str;
+	size_t	i;
 
-	size = strs_size(strs);
-	str = malloc(sizeof(char) * size);
+	size = sizeof(char) * (strslen(strs) + 1);
+	str = malloc(size);
+	if (!str)
+		return (NULL);
+	*str = 0;
+	i = 0;
+	while (strs[i])
+		ft_strlcat(str, strs[i++], size);
+	return (str);
 }
 
-void	dprint_strs(char **strs)
+void	ft_putstrs_fd(t_strs strs, int fd)
 {
 	char	*str;
 
 	str = join_strs(strs);
-	if (str)
-	{
-
-		free(str);
-	}
+	if (!str)
+		return (ft_putstr_fd(ERR_PUTSTRS, STDERR_FILENO));
+	ft_putstr_fd(str, fd);
+	free(str);
 }

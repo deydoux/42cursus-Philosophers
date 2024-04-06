@@ -1,6 +1,11 @@
 NAME				=	philo
 
-SOURCES				=	philo.c
+SOURCES				=	ft_putstr_fd.c	\
+						ft_putstrs_fd.c	\
+						ft_strlcat.c	\
+						ft_strlen.c		\
+						init_philos.c	\
+						philo.c
 
 SOURCES_DIR			=	sources
 INCLUDE_DIR			=	include
