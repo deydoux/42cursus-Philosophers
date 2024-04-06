@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 16:04:52 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/06 16:51:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_philos
 }	t_philos;
 
 void	ft_putstr_fd(const char *str, int fd);
-void	ft_putstrs_fd(const char **strs, int fd);
+void	ft_putstrs_fd(t_strs strs, int fd);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 bool	init_philos(int argc, char **argv, t_philos *philos);
