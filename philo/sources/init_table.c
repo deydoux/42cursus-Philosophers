@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_philos.c                                      :+:      :+:    :+:   */
+/*   init_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/08 11:22:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 17:42:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static bool	safe_atoul(char *str, unsigned long *n)
+static bool	safe_atos(char *str, size_t *n)
 {
-	unsigned long	tmp;
+	size_t	tmp;
 
 	tmp = 0;
 	*n = 0;
@@ -28,14 +28,38 @@ static bool	safe_atoul(char *str, unsigned long *n)
 	return (*str != 0);
 }
 
-bool	init_philos(int argc, char **argv, t_philos *philos)
+bool	init_philo(t_table *table)
 {
+	size_t	i;
+
+	table->philo = ft_calloc(table->seats, sizeof(*table->philo));
+	if (!table->philo)
+	{
+		ft_putstr_fd(ERR_ALLOC_PHILO, STDERR_FILENO);
+		return (true);
+	}
+	i = 0;
+	while (i < table->seats)
+	{
+		if (pthread_mutex_init(&table->philo[i++].fork.mutex, NULL))
+		{
+			ft_putstr_fd(ERR_MUTEX_INIT, STDERR_FILENO);
+			return (true);
+		}
+	}
+	return (false);
+}
+
+bool	init_table(int argc, char **argv, t_table *table)
+{
+	ft_bzero(table, sizeof(*table));
+	table->diet = argc == 6;
 	if (MIN_ARGC > argc || argc > MAX_ARGC
-		|| safe_atoul(argv[1], &philos->n)
-		|| safe_atoul(argv[2], &philos->die)
-		|| safe_atoul(argv[3], &philos->eat)
-		|| safe_atoul(argv[4], &philos->sleep)
-		|| (argc == 6 && safe_atoul(argv[5], &philos->max_eat)))
+		|| safe_atos(argv[1], &table->seats)
+		|| safe_atos(argv[2], &table->time.die)
+		|| safe_atos(argv[3], &table->time.eat)
+		|| safe_atos(argv[4], &table->time.sleep)
+		|| (table->diet && safe_atos(argv[5], &table->max_bowls)))
 	{
 		ft_putstrs_fd((t_strs){"Usage: ", argv[0], USAGE, NULL}, STDERR_FILENO);
 		return (true);

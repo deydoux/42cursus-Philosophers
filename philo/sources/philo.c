@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 15:50:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 15:29:16 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_philos	philos;
+	t_table	table;
 
-	init_philos(argc, argv, &philos);
+	return (init_table(argc, argv, &table));
 }
