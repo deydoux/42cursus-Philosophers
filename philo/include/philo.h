@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 16:55:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 11:20:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ERR_PUTSTRS	"ft_putstrs_fd: Cannot allocate memory\n"
 # define MIN_ARGC		5
 # define MAX_ARGC		6
-# define USAGE			" number_of_philosophers time_to_die time_to_eat\
+# define USAGE			" number_of_philosophers time_to_die time_to_eat \
 time_to_sleep [number_of_times_each_philosopher_must_eat]\n"
 
 typedef const char	*t_strs[];
