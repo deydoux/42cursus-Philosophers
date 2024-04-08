@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 16:58:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 11:22:14 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	init_philos(int argc, char **argv, t_philos *philos)
 		|| safe_atoul(argv[2], &philos->die)
 		|| safe_atoul(argv[3], &philos->eat)
 		|| safe_atoul(argv[4], &philos->sleep)
-		|| (argc == 6 && safe_atoul(argv[6], &philos->max_eat)))
+		|| (argc == 6 && safe_atoul(argv[5], &philos->max_eat)))
 	{
 		ft_putstrs_fd((t_strs){"Usage: ", argv[0], USAGE, NULL}, STDERR_FILENO);
 		return (true);
