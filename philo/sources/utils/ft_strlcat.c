@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:48:37 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 15:48:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:38:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_utils.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

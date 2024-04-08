@@ -6,14 +6,14 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:06:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/06 15:55:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:38:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_utils.h"
 
-void	ft_putstr_fd(const char *str, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
-	if (str)
-		write(fd, str, ft_strlen(str));
+	if (s)
+		write(fd, s, ft_strlen(s));
 }
