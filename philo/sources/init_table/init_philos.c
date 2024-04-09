@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   init_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 13:10:11 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/09 13:13:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "init_table.h"
 
-int	main(int argc, char **argv)
+bool	init_philos(t_table *table)
 {
-	t_table	table;
-	bool	error;
-
-	error = init_table(argc, argv, &table);
-	return (error);
+	table->philo = ft_calloc(table->seats, sizeof(*table->philo));
+	if (!table->philo)
+	{
+		ft_putstr_fd(ERR_INIT_PHILOS, STDERR_FILENO);
+		return (true);
+	}
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:22:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/08 12:39:32 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/09 13:16:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_putstrs_fd(t_strs strs, int fd)
 
 	str = join_strs(strs);
 	if (!str)
-		return (ft_putstr_fd(ERR_PUTSTRS, STDERR_FILENO));
+		return (ft_putstr_fd(ERR_PUTSTRS_FD, STDERR_FILENO));
 	ft_putstr_fd(str, fd);
 	free(str);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_table.c                                       :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/08 17:42:12 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/09 13:14:33 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "init_table.h"
 
 static bool	safe_atos(char *str, size_t *n)
 {
@@ -28,29 +28,7 @@ static bool	safe_atos(char *str, size_t *n)
 	return (*str != 0);
 }
 
-bool	init_philo(t_table *table)
-{
-	size_t	i;
-
-	table->philo = ft_calloc(table->seats, sizeof(*table->philo));
-	if (!table->philo)
-	{
-		ft_putstr_fd(ERR_ALLOC_PHILO, STDERR_FILENO);
-		return (true);
-	}
-	i = 0;
-	while (i < table->seats)
-	{
-		if (pthread_mutex_init(&table->philo[i++].fork.mutex, NULL))
-		{
-			ft_putstr_fd(ERR_MUTEX_INIT, STDERR_FILENO);
-			return (true);
-		}
-	}
-	return (false);
-}
-
-bool	init_table(int argc, char **argv, t_table *table)
+bool	parse_args(int argc, char **argv, t_table *table)
 {
 	ft_bzero(table, sizeof(*table));
 	table->diet = argc == 6;
