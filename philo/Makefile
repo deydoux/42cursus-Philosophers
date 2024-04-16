@@ -10,6 +10,7 @@ SOURCES				=	init_table/init_mutexes.c	\
 						utils/ft_calloc.c			\
 						utils/ft_putstr_fd.c		\
 						utils/ft_strlcat.c			\
+						utils/ft_strlcpy.c			\
 						utils/ft_strlen.c
 
 SOURCES_DIR			=	sources
