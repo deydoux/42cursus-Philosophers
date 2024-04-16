@@ -18,7 +18,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
