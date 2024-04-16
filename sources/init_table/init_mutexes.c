@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:44:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 13:58:16 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:22:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	init_fork_mutexes(t_table *table)
 	size_t	i;
 
 	i = 0;
-	while (i < table->n)
+	while (i < table->size)
 	{
 		if (pthread_mutex_init(&table->philos[i++].fork_r.mutex, NULL))
 		{

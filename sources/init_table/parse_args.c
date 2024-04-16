@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/15 18:42:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:22:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	parse_args(int argc, char **argv, t_table *table)
 	ft_bzero(table, sizeof(*table));
 	table->limit_meals = argc == 6;
 	if (MIN_ARGC > argc || argc > MAX_ARGC
-		|| safe_atoull(argv[1], &table->n)
+		|| safe_atoull(argv[1], &table->size)
 		|| safe_atoull(argv[2], &table->time.die)
 		|| safe_atoull(argv[3], &table->time.eat)
 		|| safe_atoull(argv[4], &table->time.sleep)

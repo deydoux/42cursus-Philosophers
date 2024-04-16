@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 15:05:00 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:22:42 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ bool	init_philos(t_table *table)
 {
 	size_t	i;
 
-	table->philos = ft_calloc(table->n, sizeof(*table->philos));
+	table->philos = ft_calloc(table->size, sizeof(*table->philos));
 	if (!table->philos)
 	{
 		ft_putstr_fd(ERR_INIT_PHILOS, STDERR_FILENO);
 		return (true);
 	}
 	i = 0;
-	while (i < table->n)
+	while (i < table->size)
 	{
 		init_philo_id(i, table->philos[i].id);
-		table->philos[i].fork_l = &table->philos[(i + 1) % table->n].fork_r;
+		table->philos[i].fork_l = &table->philos[(i + 1) % table->size].fork_r;
 		i++;
 	}
 	return (false);
