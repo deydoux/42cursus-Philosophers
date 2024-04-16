@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/15 18:29:36 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 13:58:02 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_table
 	t_philo_time		time;
 	bool				limit_meals;
 	unsigned long long	max_meals;
-	t_philo				*philo;
+	t_philo				*philos;
 	pthread_mutex_t		mutex;
 }	t_table;
 
