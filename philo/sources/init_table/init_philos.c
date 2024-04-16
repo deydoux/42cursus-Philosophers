@@ -6,19 +6,52 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 13:13:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/15 18:44:42 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_table.h"
 
+static void	init_philo_id(unsigned long long n, char *id)
+{
+	unsigned long long	tmp_n;
+	size_t				len;
+
+	if (!++n)
+	{
+		ft_strlcpy(id, MAX_PHILO_ID, PHILO_ID_SIZE);
+		return ;
+	}
+	tmp_n = n;
+	len = 0;
+	while (tmp_n)
+	{
+		tmp_n /= 10;
+		len++;
+	}
+	id[len] = 0;
+	while (len--)
+	{
+		id[len] = n % 10 + '0';
+		n /= 10;
+	}
+}
+
 bool	init_philos(t_table *table)
 {
-	table->philo = ft_calloc(table->seats, sizeof(*table->philo));
+	size_t	i;
+
+	table->philo = ft_calloc(table->n, sizeof(*table->philo));
 	if (!table->philo)
 	{
 		ft_putstr_fd(ERR_INIT_PHILOS, STDERR_FILENO);
 		return (true);
+	}
+	i = 0;
+	while (i < table->n)
+	{
+		init_philo_id(i, table->philo[i].id);
+		table->philo[i].fork_l = &table->philo[(i + 1) % table->n].fork_r;
 	}
 	return (false);
 }

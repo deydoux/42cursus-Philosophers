@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:54:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/12 18:19:32 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/15 16:37:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define ERR_INIT_MUTEXES	"Failed to init mutexes\n"
 # define ERR_INIT_PHILOS	"Failed to init philos\n"
+# define MAX_PHILO_ID		"18446744073709551616"
 # define MIN_ARGC			5
 # define MAX_ARGC			6
 # define USAGE				" number_of_philosophers time_to_die time_to_eat \

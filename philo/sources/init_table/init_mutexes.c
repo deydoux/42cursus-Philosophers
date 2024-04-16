@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:44:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 15:04:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:56:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static bool	init_fork_mutexes(t_table *table)
 	size_t	i;
 
 	i = 0;
-	while (i < table->seats)
+	while (i < table->n)
 	{
-		if (pthread_mutex_init(&table->philo[i++].fork.mutex, NULL))
+		if (pthread_mutex_init(&table->philo[i++].fork_r.mutex, NULL))
 		{
 			while (i--)
-				pthread_mutex_destroy(&table->philo[i].fork.mutex);
+				pthread_mutex_destroy(&table->philo[i].fork_r.mutex);
 			return (true);
 		}
 	}

@@ -6,15 +6,15 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 13:14:33 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/15 18:42:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_table.h"
 
-static bool	safe_atos(char *str, size_t *n)
+static bool	safe_atoull(char *str, unsigned long long *n)
 {
-	size_t	tmp;
+	unsigned long long	tmp;
 
 	tmp = 0;
 	*n = 0;
@@ -31,13 +31,13 @@ static bool	safe_atos(char *str, size_t *n)
 bool	parse_args(int argc, char **argv, t_table *table)
 {
 	ft_bzero(table, sizeof(*table));
-	table->diet = argc == 6;
+	table->limit_meals = argc == 6;
 	if (MIN_ARGC > argc || argc > MAX_ARGC
-		|| safe_atos(argv[1], &table->seats)
-		|| safe_atos(argv[2], &table->time.die)
-		|| safe_atos(argv[3], &table->time.eat)
-		|| safe_atos(argv[4], &table->time.sleep)
-		|| (table->diet && safe_atos(argv[5], &table->max_bowls)))
+		|| safe_atoull(argv[1], &table->n)
+		|| safe_atoull(argv[2], &table->time.die)
+		|| safe_atoull(argv[3], &table->time.eat)
+		|| safe_atoull(argv[4], &table->time.sleep)
+		|| (table->limit_meals && safe_atoull(argv[5], &table->max_meals)))
 	{
 		ft_putstrs_fd((t_strs){"Usage: ", argv[0], USAGE, NULL}, STDERR_FILENO);
 		return (true);
