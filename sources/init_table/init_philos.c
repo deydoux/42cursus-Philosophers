@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 13:58:32 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:05:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ bool	init_philos(t_table *table)
 	{
 		init_philo_id(i, table->philos[i].id);
 		table->philos[i].fork_l = &table->philos[(i + 1) % table->n].fork_r;
+		i++;
 	}
 	return (false);
 }
