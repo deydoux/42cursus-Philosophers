@@ -6,16 +6,16 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 15:22:42 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:14:59 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_table.h"
 
-static void	init_philo_id(unsigned long long n, char *id)
+static void	init_philo_id(size_t n, char *id)
 {
-	unsigned long long	tmp_n;
-	size_t				len;
+	size_t	tmp_n;
+	size_t	len;
 
 	if (!++n)
 	{
@@ -52,6 +52,7 @@ bool	init_philos(t_table *table)
 	{
 		init_philo_id(i, table->philos[i].id);
 		table->philos[i].fork_l = &table->philos[(i + 1) % table->size].fork_r;
+		table->philos[i].table_mutex = &table->mutex;
 		i++;
 	}
 	return (false);

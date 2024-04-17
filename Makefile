@@ -4,8 +4,10 @@ SOURCES				=	init_table/init_mutexes.c	\
 						init_table/init_philos.c	\
 						init_table/init_table.c		\
 						init_table/parse_args.c		\
+						init_threads.c				\
 						philo.c						\
 						putstrs_fd.c				\
+						routine/routine.c			\
 						utils/ft_bzero.c			\
 						utils/ft_calloc.c			\
 						utils/ft_putstr_fd.c		\

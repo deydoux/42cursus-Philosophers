@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.h                                          :+:      :+:    :+:   */
+/*   init_threads.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 17:47:40 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/16 18:19:32 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROUTINE_H
-# define ROUTINE_H
+#include "philo.h"
 
-# include <sys/time.h>
-# include <stdio.h>
-# include "philo.h"
+bool	init_threads(t_table *table)
+{
+	size_t	i;
 
-# define DIE_FORMAT		"%llu %s died\n"
-# define EAT_FORMAT		"%llu %s is eating\n"
-# define FORK_FORMAT	"%llu %s has taken a fork\n"
-# define SLEEP_FORMAT	"%llu %s is sleeping\n"
-# define THINK_FORMAT	"%llu %s is thinking\n"
-
-#endif
+	pthread_mutex_lock(&table->mutex);
+	i = 0;
+	while (i < table->size)
+	{
+		pthread_create(&table->philos[i].thread, NULL, (void *)routine,
+			&table->philos[i]);
+		pthread_detach(table->philos[i].thread);
+		i++;
+	}
+	pthread_mutex_unlock(&table->mutex);
+	return (false);
+}

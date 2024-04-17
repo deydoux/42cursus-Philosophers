@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:22:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 13:16:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/16 16:49:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*join_strs(t_strs strs)
 	return (str);
 }
 
-void	ft_putstrs_fd(t_strs strs, int fd)
+void	putstrs_fd(t_strs strs, int fd)
 {
 	char	*str;
 
