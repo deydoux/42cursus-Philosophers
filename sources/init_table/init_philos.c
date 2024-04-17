@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/17 15:14:59 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:25:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ static void	init_philo_id(size_t n, char *id)
 	}
 }
 
+static void	init_philo(t_table *table, size_t i)
+{
+	ft_memcpy(&table->philos[i], &(t_philo){
+		.fork_l = &table->philos[(i + 1) % table->size].fork_r,
+		.max_meals = table->max_meals,
+		.table_mutex = &table->mutex,
+		.time = table->time
+	}, sizeof(t_philo));
+	init_philo_id(i, table->philos[i].id);
+}
+
 bool	init_philos(t_table *table)
 {
 	size_t	i;
@@ -49,11 +60,6 @@ bool	init_philos(t_table *table)
 	}
 	i = 0;
 	while (i < table->size)
-	{
-		init_philo_id(i, table->philos[i].id);
-		table->philos[i].fork_l = &table->philos[(i + 1) % table->size].fork_r;
-		table->philos[i].table_mutex = &table->mutex;
-		i++;
-	}
+		init_philo(table, i++);
 	return (false);
 }
