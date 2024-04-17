@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/09 13:14:13 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:12:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 bool	init_table(int argc, char **argv, t_table *table)
 {
 	return (parse_args(argc, argv, table)
-		|| init_philos(table)
-		|| init_mutexes(table));
+		|| init_philos(table));
 }

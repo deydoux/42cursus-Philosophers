@@ -1,7 +1,6 @@
 NAME				=	philo
 
-SOURCES				=	init_table/init_mutexes.c	\
-						init_table/init_philos.c	\
+SOURCES				=	init_table/init_philos.c	\
 						init_table/init_table.c		\
 						init_table/parse_args.c		\
 						init_threads.c				\
