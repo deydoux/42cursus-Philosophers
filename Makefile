@@ -10,6 +10,7 @@ SOURCES				=	init_table/init_mutexes.c	\
 						routine/routine.c			\
 						utils/ft_bzero.c			\
 						utils/ft_calloc.c			\
+						utils/ft_memcpy.c			\
 						utils/ft_putstr_fd.c		\
 						utils/ft_strlcat.c			\
 						utils/ft_strlcpy.c			\

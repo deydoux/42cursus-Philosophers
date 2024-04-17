@@ -15,7 +15,6 @@
 
 # include <pthread.h>
 # include <stdbool.h>
-# include <unistd.h>
 # include "philo_utils.h"
 
 # define PHILO_ID_SIZE	21
