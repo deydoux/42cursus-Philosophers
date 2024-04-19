@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/17 16:13:33 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/19 17:49:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdbool.h>
+# include <sys/time.h>
 # include "philo_utils.h"
 
 # define PHILO_ID_SIZE	21
@@ -22,36 +23,44 @@
 
 typedef const char	*t_strs[];
 
-typedef struct s_philo_time
+typedef enum e_philo_state
 {
-	size_t	die;
-	size_t	eat;
-	size_t	sleep;
-}	t_philo_time;
+	philo_think = 0,
+	philo_eat = 1,
+	philo_sleep = 2
+}	t_philo_state;
+
+typedef struct s_philo_common
+{
+	bool			limit_eat;
+	bool			ready;
+	size_t			must_eat;
+	size_t			start_time;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	pthread_mutex_t	mutex;
+}	t_philo_common;
 
 typedef struct s_philo
 {
-	pthread_mutex_t	fork_r;
-	pthread_mutex_t	*fork_l;
 	char			id[PHILO_ID_SIZE];
-	bool			limit_meals;
-	size_t			max_meals;
-	size_t			meals;
-	pthread_mutex_t	*table_mutex;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	right_fork;
 	pthread_t		thread;
-	t_philo_time	time;
+	size_t			eat_count;
+	t_philo_common	*common;
+	t_philo_state	state;
 }	t_philo;
 
 typedef struct s_table
 {
-	bool			limit_meals;
-	size_t			max_meals;
-	pthread_mutex_t	mutex;
+	size_t			n_philo;
 	t_philo			*philos;
-	size_t			size;
-	t_philo_time	time;
+	t_philo_common	common;
 }	t_table;
 
+size_t	get_ms_time(void);
 bool	init_table(int argc, char **argv, t_table *table);
 bool	init_threads(t_table *table);
 void	putstrs_fd(t_strs strs, int fd);

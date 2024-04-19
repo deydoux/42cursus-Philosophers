@@ -1,6 +1,7 @@
 NAME				=	philo
 
-SOURCES				=	init_table/init_philos.c	\
+SOURCES				=	get_ms_time.c				\
+						init_table/init_philos.c	\
 						init_table/init_table.c		\
 						init_table/parse_args.c		\
 						init_threads.c				\

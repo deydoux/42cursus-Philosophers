@@ -6,14 +6,13 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/16 17:47:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:34:39 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROUTINE_H
 # define ROUTINE_H
 
-# include <sys/time.h>
 # include <stdio.h>
 # include "philo.h"
 
