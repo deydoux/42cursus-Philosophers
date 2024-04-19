@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/19 17:49:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/19 18:09:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <sys/time.h>
 # include "philo_utils.h"
 
-# define PHILO_ID_SIZE	21
 # define ERR_PUTSTRS_FD	"putstrs_fd: Cannot allocate memory\n"
+# define PHILO_ID_SIZE	21
 
 typedef const char	*t_strs[];
 
@@ -34,12 +34,12 @@ typedef struct s_philo_common
 {
 	bool			limit_eat;
 	bool			ready;
+	pthread_mutex_t	mutex;
 	size_t			must_eat;
 	size_t			start_time;
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
-	pthread_mutex_t	mutex;
 }	t_philo_common;
 
 typedef struct s_philo
