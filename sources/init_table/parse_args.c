@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/19 17:26:45 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/22 15:16:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	parse_args(int argc, char **argv, t_table *table)
 		|| (table->common.limit_eat
 			&& safe_atos(argv[5], &table->common.must_eat)))
 	{
-		putstrs_fd((t_strs){"Usage: ", argv[0], USAGE, NULL}, STDERR_FILENO);
+		ft_putstr_fd(USAGE, STDERR_FILENO);
 		return (true);
 	}
 	return (false);

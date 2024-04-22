@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   destroy_table.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/22 15:07:42 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/22 19:21:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "destroy_table.h"
 
-void	*routine(t_philo *philo)
+void	destroy_table(t_table table)
 {
-	pthread_mutex_lock(&philo->common->mutex.data);
-	pthread_mutex_unlock(&philo->common->mutex.data);
-	if (!philo->common->ready)
-		return (NULL);
-	printf("%zu %s I'm alive!\n", get_ms_time() - philo->common->start_time, philo->id);
-	return (NULL);
+	destroy_mutexes(table);
+	free(table.philos);
 }
