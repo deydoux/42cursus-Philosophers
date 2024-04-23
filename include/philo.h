@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/22 15:23:34 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:57:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 typedef enum e_philo_state
 {
-	philo_think = 0,
-	philo_eat = 1,
-	philo_sleep = 2
+	philo_think,
+	philo_eat,
+	philo_sleep
 }	t_philo_state;
 
 typedef struct s_safe_mutex

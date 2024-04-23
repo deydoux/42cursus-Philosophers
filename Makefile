@@ -1,21 +1,20 @@
 NAME				=	philo
 
-SOURCES				=	destroy_table/destroy_mutexes.c	\
-						destroy_table/destroy_table.c	\
-						get_ms_time.c					\
-						init_table/init_mutexes.c		\
-						init_table/init_philos.c		\
-						init_table/init_table.c			\
-						init_table/parse_args.c			\
-						init_threads.c					\
-						philo.c							\
-						routine/routine.c				\
-						utils/ft_bzero.c				\
-						utils/ft_calloc.c				\
-						utils/ft_memcpy.c				\
-						utils/ft_putstr_fd.c			\
-						utils/ft_strlcat.c				\
-						utils/ft_strlcpy.c				\
+SOURCES				=	destroy_table.c				\
+						get_ms_time.c				\
+						init_table/init_mutexes.c	\
+						init_table/init_philos.c	\
+						init_table/init_table.c		\
+						init_table/parse_args.c		\
+						init_threads.c				\
+						philo.c						\
+						routine/routine.c			\
+						utils/ft_bzero.c			\
+						utils/ft_calloc.c			\
+						utils/ft_memcpy.c			\
+						utils/ft_putstr_fd.c		\
+						utils/ft_strlcat.c			\
+						utils/ft_strlcpy.c			\
 						utils/ft_strlen.c
 
 SOURCES_DIR			=	sources
@@ -23,7 +22,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g -fsanitize=thread
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
@@ -49,8 +48,11 @@ fclean				:
 
 re					:	fclean all
 
+VALGRIND			=
 ARGS				=	5 10000 200 500 5
 run					:	$(NAME)
-	./$^ $(ARGS)
+	$(VALGRIND) ./$^ $(ARGS)
+leaks				:	$(NAME)
+	$(MAKE) run VALGRIND="valgrind --tool=helgrind"
 
 .PHONY				:	all bonus clean fclean re

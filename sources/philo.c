@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/22 19:22:51 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:00:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 	bool	error;
 
 	error = init_table(argc, argv, &table) || init_threads(&table);
-	usleep(100000);
 	destroy_table(table);
 	return (error);
 }
