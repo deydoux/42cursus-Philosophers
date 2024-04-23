@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/22 15:16:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:24:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	safe_atos(char *str, size_t *n)
 	while ('0' <= *str && *str <= '9')
 	{
 		tmp = tmp * 10 + *str++ - '0';
-		if (*n != tmp / 10)
+		if (tmp < *n)
 			return (true);
 		*n = tmp;
 	}
