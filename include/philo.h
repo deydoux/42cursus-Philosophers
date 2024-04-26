@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/26 18:02:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/26 18:09:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	destroy_table(t_table table);
 size_t	get_ms_time(void);
 bool	init_table(int argc, char **argv, t_table *table);
 bool	init_threads(t_table *table);
-int		ms_sleep(unsigned int ms_sec);
 void	*routine(t_philo *philo);
 
 #endif
