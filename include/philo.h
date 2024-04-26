@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/23 13:57:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/26 18:02:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 	char			id[PHILO_ID_SIZE];
 	pthread_t		thread;
 	size_t			eat_count;
+	size_t			i;
 	t_philo_common	*common;
 	t_philo_state	state;
 	t_safe_mutex	*left_fork;
