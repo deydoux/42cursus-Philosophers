@@ -68,6 +68,7 @@ void	destroy_table(t_table table);
 size_t	get_ms_time(void);
 bool	init_table(int argc, char **argv, t_table *table);
 bool	init_threads(t_table *table);
+int		ms_sleep(unsigned int ms_sec);
 void	*routine(t_philo *philo);
 
 #endif

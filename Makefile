@@ -7,6 +7,7 @@ SOURCES				=	destroy_table.c				\
 						init_table/init_table.c		\
 						init_table/parse_args.c		\
 						init_threads.c				\
+						ms_sleep.c					\
 						philo.c						\
 						routine/routine.c			\
 						utils/ft_bzero.c			\
