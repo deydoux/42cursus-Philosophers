@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/26 18:09:11 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 20:41:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define ERR_INIT_THREADS	"Failed to init threads\n"
 # define PHILO_ID_SIZE		21
+
+typedef unsigned int	t_ms;
 
 typedef enum e_philo_state
 {
@@ -40,9 +42,9 @@ typedef struct s_philo_common
 	bool			ready;
 	size_t			must_eat;
 	size_t			start_time;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
+	t_ms			time_to_die;
+	t_ms			time_to_eat;
+	t_ms			time_to_sleep;
 	t_safe_mutex	mutex;
 }	t_philo_common;
 
