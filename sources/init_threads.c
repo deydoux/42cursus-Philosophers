@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/23 14:05:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:30:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 static bool	init_thread(t_philo *philo)
 {
-	return (pthread_create(&philo->thread, NULL, (void *)routine, philo) != 0);
+	philo->thread.initialized = !pthread_create(&philo->thread.data, NULL,
+			(void *)routine, philo);
+	if (!philo->thread.initialized)
+	{
+		ft_putstr_fd(ERR_INIT_THREADS, STDERR_FILENO);
+		return (true);
+	}
+	return (false);
 }
 
 bool	init_threads(t_table *table)
@@ -27,10 +34,8 @@ bool	init_threads(t_table *table)
 	pthread_mutex_lock(&table->common.mutex.data);
 	while (!error && i < table->n_philo)
 		error = init_thread(&table->philos[i++]);
-	table->common.ready = !error;
+	table->common.kill = error;
 	table->common.start_time = get_ms_time();
-	if (!table->common.ready)
-		ft_putstr_fd(ERR_INIT_THREADS, STDERR_FILENO);
 	pthread_mutex_unlock(&table->common.mutex.data);
 	return (error);
 }

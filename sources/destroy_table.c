@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/23 13:59:50 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:32:19 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	destroy_mutex(t_safe_mutex mutex)
 
 static void	destroy_philo(t_philo philo)
 {
-	pthread_join(philo.thread, NULL);
+	if (philo.thread.initialized)
+		pthread_join(philo.thread.data, NULL);
 	destroy_mutex(philo.right_fork);
 }
 
@@ -29,8 +30,9 @@ static void	destroy_philos(t_table table)
 	size_t	i;
 
 	i = 0;
-	while (i < table.n_philo)
-		destroy_philo(table.philos[i++]);
+	if (table.philos)
+		while (i < table.n_philo)
+			destroy_philo(table.philos[i++]);
 }
 
 void	destroy_table(t_table table)

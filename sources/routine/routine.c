@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 21:09:29 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:30:51 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->common->mutex.data);
 	pthread_mutex_unlock(&philo->common->mutex.data);
-	if (!philo->common->ready)
+	if (philo->common->kill)
 		return (NULL);
 	printf(THINK_FORMAT, (size_t)0, philo->id);
 	if (philo->i % 2)
