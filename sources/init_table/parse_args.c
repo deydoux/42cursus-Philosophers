@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 20:35:33 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:11:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	safe_atos(char *str, size_t *n)
 		tmp = tmp * 10 + *str++ - '0';
 		if (tmp < *n)
 		{
-			ft_putstr_fd(ERR_PARSE_SIZE_MAX, STDERR_FILENO);
+			ft_putstr_fd(ERR_PARSE_SIZE, STDERR_FILENO);
 			return (true);
 		}
 		*n = tmp;
@@ -36,18 +36,18 @@ static bool	safe_atos(char *str, size_t *n)
 	return (false);
 }
 
-static bool	parse_time(char *str, t_ms *ms)
+static bool	parse_time(char *str, useconds_t *usec)
 {
 	size_t	n;
 
 	if (safe_atos(str, &n))
 		return (true);
-	if (n > MS_MAX)
+	*usec = n * 1000;
+	if (*usec < n)
 	{
-		ft_putstr_fd(ERR_PARSE_MS_MAX, STDERR_FILENO);
+		ft_putstr_fd(ERR_PARSE_USEC, STDERR_FILENO);
 		return (true);
 	}
-	*ms = n;
 	return (false);
 }
 

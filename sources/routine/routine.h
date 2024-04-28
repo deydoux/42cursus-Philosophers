@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 20:46:25 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:07:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,5 @@
 # define FORK_FORMAT	"%zu %s has taken a fork\n"
 # define SLEEP_FORMAT	"%zu %s is sleeping\n"
 # define THINK_FORMAT	"%zu %s is thinking\n"
-
-int	ms_sleep(unsigned int ms_sec);
 
 #endif

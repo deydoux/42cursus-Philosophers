@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 20:41:10 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:04:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ typedef struct s_philo_common
 	bool			ready;
 	size_t			must_eat;
 	size_t			start_time;
-	t_ms			time_to_die;
-	t_ms			time_to_eat;
-	t_ms			time_to_sleep;
 	t_safe_mutex	mutex;
+	useconds_t		time_to_eat;
+	useconds_t		time_to_die;
+	useconds_t		time_to_sleep;
 }	t_philo_common;
 
 typedef struct s_philo
