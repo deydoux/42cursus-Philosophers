@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/29 16:08:55 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/29 16:25:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,33 @@ static bool	print_state(char *format, t_philo *philo)
 	return (false);
 }
 
+static bool	philo_eat(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->right_fork.data);
+	if (print_state(FORK_FORMAT, philo))
+		return (true);
+	pthread_mutex_lock(&philo->left_fork->data);
+	if (print_state(FORK_FORMAT, philo) || print_state(EAT_FORMAT, philo))
+		return (true);
+	usleep(philo->common->time_to_eat);
+	pthread_mutex_unlock(&philo->right_fork.data);
+	pthread_mutex_unlock(&philo->left_fork->data);
+	return (false);
+}
+
+static bool	philo_sleep(t_philo *philo)
+{
+	if (print_state(SLEEP_FORMAT, philo))
+		return (true);
+	usleep(philo->common->time_to_sleep);
+	return (false);
+}
+
+static bool	philo_think(t_philo *philo)
+{
+	return (print_state(THINK_FORMAT, philo));
+}
+
 void	*routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->common->mutex.data);
@@ -34,18 +61,7 @@ void	*routine(t_philo *philo)
 	printf(THINK_FORMAT, (size_t)0, philo->id);
 	if (philo->i % 2)
 		usleep(philo->common->time_to_eat / 2);
-	while (true)
-	{
-		pthread_mutex_lock(&philo->right_fork.data);
-		print_state(FORK_FORMAT, philo);
-		pthread_mutex_lock(&philo->left_fork->data);
-		print_state(FORK_FORMAT, philo);
-		print_state(EAT_FORMAT, philo);
-		usleep(philo->common->time_to_eat);
-		pthread_mutex_unlock(&philo->right_fork.data);
-		pthread_mutex_unlock(&philo->left_fork->data);
-		print_state(SLEEP_FORMAT, philo);
-		usleep(philo->common->time_to_sleep);
-	}
+	while (!(philo_eat(philo) || philo_sleep(philo) || philo_think(philo)))
+		;
 	return (NULL);
 }
