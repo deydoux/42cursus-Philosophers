@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/30 13:22:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:06:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_philo_common
 	useconds_t		time_to_sleep;
 }	t_philo_common;
 
+typedef struct s_philo_fork
+{
+	bool			used;
+	t_safe_mutex	mutex;
+}	t_philo_fork;
+
 typedef struct s_safe_thread
 {
 	bool		initialized;
@@ -52,8 +58,8 @@ typedef struct s_philo
 	size_t			i;
 	size_t			last_eat;
 	t_philo_common	*common;
-	t_safe_mutex	*left_fork;
-	t_safe_mutex	right_fork;
+	t_philo_fork	*left_fork;
+	t_philo_fork	right_fork;
 	t_safe_thread	thread;
 }	t_philo;
 

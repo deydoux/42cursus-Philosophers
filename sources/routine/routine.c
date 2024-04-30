@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/30 13:45:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:07:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ static bool	print_state(char *format, t_philo *philo)
 
 static bool	philo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->right_fork.data);
+	pthread_mutex_lock(&philo->right_fork.mutex.data);
 	if (print_state(FORK_FORMAT, philo))
 		return (true);
-	pthread_mutex_lock(&philo->left_fork->data);
+	pthread_mutex_lock(&philo->left_fork->mutex.data);
 	if (print_state(FORK_FORMAT, philo) || print_state(EAT_FORMAT, philo))
 		return (true);
 	usleep(philo->common->time_to_eat);
-	pthread_mutex_unlock(&philo->right_fork.data);
-	pthread_mutex_unlock(&philo->left_fork->data);
+	pthread_mutex_unlock(&philo->right_fork.mutex.data);
+	pthread_mutex_unlock(&philo->left_fork->mutex.data);
 	return (false);
 }
 
