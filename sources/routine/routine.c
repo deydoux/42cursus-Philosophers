@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/29 16:25:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/04/30 13:45:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	*routine(t_philo *philo)
 	if (philo->common->kill)
 		return (NULL);
 	printf(THINK_FORMAT, (size_t)0, philo->id);
+	philo->last_eat = philo->common->start_time;
 	if (philo->i % 2)
 		usleep(philo->common->time_to_eat / 2);
 	while (!(philo_eat(philo) || philo_sleep(philo) || philo_think(philo)))
