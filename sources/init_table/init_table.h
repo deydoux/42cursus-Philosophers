@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:54:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 21:08:35 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:01:59 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define ERR_INIT_PHILOS	"Failed to init philos\n"
 # define ERR_PARSE_SIZE		"Arguments overflowed size_t\n"
 # define ERR_PARSE_USEC		"Time arguments overflowed useconds_t\n"
-# define MAX_PHILO_ID		"18446744073709551616"
 # define MAX_ARGC			6
 # define MIN_ARGC			5
 # define USAGE				"Usage: ./philo number_of_philosophers time_to_die \

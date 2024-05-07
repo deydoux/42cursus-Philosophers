@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 21:07:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:03:36 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <stdio.h>
 # include "philo.h"
 
-# define DIE_FORMAT		"%zu %s died\n"
-# define EAT_FORMAT		"%zu %s is eating\n"
-# define FORK_FORMAT	"%zu %s has taken a fork\n"
-# define SLEEP_FORMAT	"%zu %s is sleeping\n"
-# define THINK_FORMAT	"%zu %s is thinking\n"
+# define DIE_FORMAT		"%zu %zu died\n"
+# define EAT_FORMAT		"%zu %zu is eating\n"
+# define FORK_FORMAT	"%zu %zu has taken a fork\n"
+# define SLEEP_FORMAT	"%zu %zu is sleeping\n"
+# define THINK_FORMAT	"%zu %zu is thinking\n"
 
 #endif

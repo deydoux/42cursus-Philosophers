@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/30 14:06:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:01:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "philo_utils.h"
 
 # define ERR_INIT_THREADS	"Failed to init threads\n"
-# define PHILO_ID_SIZE		21
 
 typedef struct s_safe_mutex
 {
@@ -53,9 +52,9 @@ typedef struct s_safe_thread
 
 typedef struct s_philo
 {
-	char			id[PHILO_ID_SIZE];
+	bool			even;
 	size_t			eat_count;
-	size_t			i;
+	size_t			id;
 	size_t			last_eat;
 	t_philo_common	*common;
 	t_philo_fork	*left_fork;
