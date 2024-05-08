@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/07 15:01:52 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/08 14:21:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "philo_utils.h"
 
 # define ERR_INIT_THREADS	"Failed to init threads\n"
+# define MIN_TIME			60000
 
 typedef struct s_safe_mutex
 {
