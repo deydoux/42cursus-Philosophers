@@ -6,35 +6,57 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/07 14:24:52 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/09 15:41:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-static void	init_routine(t_philo *philo)
+static bool	philo_sleep(t_philo *philo)
+{
+	(void)philo;
+	return (false);
+}
+
+static bool	philo_think(t_philo *philo)
+{
+	(void)philo;
+	return (false);
+}
+
+static bool	philo_eat(t_philo *philo)
+{
+	(void)philo;
+	return (false);
+}
+
+static bool	init_routine(t_philo *philo)
 {
 	printf(THINK_FORMAT, (size_t)0, philo->id);
-	if (philo->even)
+	if (!philo->even)
 	{
-		philo->right_fork.used = true;
-		philo->left_fork->used = true;
-		printf(FORK_FORMAT, (size_t)0, philo->id);
-		printf(FORK_FORMAT, (size_t)0, philo->id);
-		printf(EAT_FORMAT, (size_t)0, philo->id);
-		usleep(philo->common->time_to_eat);
+		pthread_mutex_unlock(&philo->common->mutex.data);
+		usleep(MIN_TIME / 2);
+		return (philo_eat(philo));
 	}
-	else
-		usleep(philo->common->time_to_eat / 2);
+	printf(FORK_FORMAT, (size_t)0, philo->id);
+	printf(FORK_FORMAT, (size_t)0, philo->id);
+	printf(EAT_FORMAT, (size_t)0, philo->id);
+	pthread_mutex_unlock(&philo->common->mutex.data);
+	usleep(philo->common->time_to_eat);
+	return (false);
 }
 
 void	*routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->common->mutex.data);
-	pthread_mutex_unlock(&philo->common->mutex.data);
 	if (philo->common->kill)
+	{
+		pthread_mutex_unlock(&philo->common->mutex.data);
 		return (NULL);
-	philo->last_eat = philo->common->start_time;
-	init_routine(philo);
+	}
+	if (!init_routine(philo))
+		while (!philo_sleep(philo) && !philo_think(philo) && philo_eat(philo))
+			;
 	return (NULL);
 }
