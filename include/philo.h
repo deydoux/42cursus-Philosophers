@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/08 14:21:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/09 17:13:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_table
 	t_philo_common	common;
 }	t_table;
 
-void	destroy_table(t_table table);
+void	destroy_table(t_table *table);
 size_t	get_ms_time(void);
 bool	init_table(int argc, char **argv, t_table *table);
 bool	init_threads(t_table *table);

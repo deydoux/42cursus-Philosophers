@@ -6,16 +6,16 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/08 14:48:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/09 17:21:53 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	destroy_mutex(t_safe_mutex mutex)
+static void	destroy_mutex(t_safe_mutex *mutex)
 {
-	if (mutex.initialized)
-		pthread_mutex_destroy(&mutex.data);
+	if (mutex->initialized)
+		pthread_mutex_destroy(&mutex->data);
 }
 
 static void	destroy_thread(t_safe_thread thread)
@@ -24,25 +24,25 @@ static void	destroy_thread(t_safe_thread thread)
 		pthread_join(thread.data, NULL);
 }
 
-static void	destroy_philo(t_philo philo)
+static void	destroy_philo(t_philo *philo)
 {
-	destroy_thread(philo.thread);
-	destroy_mutex(philo.right_fork.mutex);
+	destroy_thread(philo->thread);
+	destroy_mutex(&philo->right_fork.mutex);
 }
 
-static void	destroy_philos(t_table table)
+static void	destroy_philos(t_table *table)
 {
 	size_t	i;
 
 	i = 0;
-	if (table.philos)
-		while (i < table.n_philo)
-			destroy_philo(table.philos[i++]);
+	if (table->philos)
+		while (i < table->n_philo)
+			destroy_philo(&table->philos[i++]);
 }
 
-void	destroy_table(t_table table)
+void	destroy_table(t_table *table)
 {
 	destroy_philos(table);
-	free(table.philos);
-	destroy_mutex(table.common.mutex);
+	free(table->philos);
+	destroy_mutex(&table->common.mutex);
 }
