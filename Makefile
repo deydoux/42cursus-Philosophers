@@ -22,7 +22,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g -fsanitize=thread
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g #-fsanitize=thread
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
@@ -48,11 +48,12 @@ fclean				:
 
 re					:	fclean all
 
-VALGRIND			=
-ARGS				=	5 10000 200 500 5
+ARGS				=	6 120 60 60
 run					:	$(NAME)
+	./$^ $(ARGS)
+
+VALGRIND			=	valgrind --tool=drd #--default-suppressions=no
+valgrind			:	$(NAME)
 	$(VALGRIND) ./$^ $(ARGS)
-leaks				:	$(NAME)
-	$(MAKE) run VALGRIND="valgrind --tool=helgrind"
 
 .PHONY				:	all bonus clean fclean re
