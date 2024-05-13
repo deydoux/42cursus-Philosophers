@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/07 17:37:39 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:53:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_philo(t_table *table, size_t i)
 	table->philos[i].id = i + 1;
 	table->philos[i].left_fork = &table->philos[(i + 1) % table->n_philo]
 		.right_fork;
-	table->philos[i].right_fork.used = true;
+	table->philos[i].right_fork.taken = true;
 	table->philos[i].common = &table->common;
 }
 
