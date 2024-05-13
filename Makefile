@@ -48,12 +48,18 @@ fclean				:
 
 re					:	fclean all
 
-ARGS				=	6 120 60 60
+.PHONY				:	all bonus clean fclean re
+
+
+
+ARGS				=	200 120 60 60
 run					:	$(NAME)
 	./$^ $(ARGS)
 
-VALGRIND			=	valgrind --tool=drd #--default-suppressions=no
-valgrind			:	$(NAME)
-	$(VALGRIND) ./$^ $(ARGS)
+HELGRIND			=	valgrind --tool=helgrind #--default-suppressions=no
+helgrind			:	$(NAME)
+	$(HELGRIND) ./$^ $(ARGS)
 
-.PHONY				:	all bonus clean fclean re
+DRD					=	valgrind --tool=drd
+drd					:	$(NAME)
+	$(DRD) ./$^ $(ARGS)
