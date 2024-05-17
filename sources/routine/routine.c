@@ -6,17 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 15:34:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:50:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
-
-static bool	sleep_routine(t_philo *philo)
-{
-	(void)philo;
-	return (false);
-}
 
 static bool	think(t_philo *philo)
 {
