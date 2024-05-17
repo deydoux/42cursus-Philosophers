@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/07 15:03:36 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:32:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 # define FORK_FORMAT	"%zu %zu has taken a fork\n"
 # define SLEEP_FORMAT	"%zu %zu is sleeping\n"
 # define THINK_FORMAT	"%zu %zu is thinking\n"
+
+bool	eat(t_philo *philo);
+void	philo_sleep(useconds_t time, t_philo *philo);
 
 #endif

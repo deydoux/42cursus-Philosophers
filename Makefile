@@ -8,6 +8,8 @@ SOURCES				=	destroy_table.c				\
 						init_table/parse_args.c		\
 						init_threads.c				\
 						philo.c						\
+						routine/eat.c				\
+						routine/philo_sleep.c		\
 						routine/routine.c			\
 						utils/ft_bzero.c			\
 						utils/ft_calloc.c			\
