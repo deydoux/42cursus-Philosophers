@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 15:50:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:59:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define THINK_FORMAT	"%zu %zu is thinking\n"
 
 bool	eat(t_philo *philo);
+bool	philo_sleep(useconds_t time, t_philo *philo);
 bool	sleep_routine(t_philo *philo);
-void	philo_sleep(useconds_t time, t_philo *philo);
 
 #endif

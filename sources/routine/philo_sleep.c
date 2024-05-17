@@ -6,20 +6,20 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:22:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 15:23:25 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 16:00:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-void	philo_sleep(useconds_t time, t_philo *philo)
+bool	philo_sleep(useconds_t time, t_philo *philo)
 {
 	const size_t	time_to_die = get_ms_time() - philo->common->start_time;
 
 	if (time < time_to_die)
 	{
 		usleep(time);
-		return ;
+		return (false);
 	}
 	usleep(philo->common->time_to_die);
 	pthread_mutex_lock(&philo->common->mutex.data);
@@ -28,4 +28,5 @@ void	philo_sleep(useconds_t time, t_philo *philo)
 			philo->id);
 	philo->common->kill = true;
 	pthread_mutex_unlock(&philo->common->mutex.data);
+	return (true);
 }
