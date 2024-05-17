@@ -6,26 +6,26 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/13 18:39:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:12:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-static void	philo_usleep(useconds_t time, t_philo *philo)
-{
-	const size_t	time_to_die = get_ms_time() - philo->common->start_time ;
+// static void	philo_usleep(useconds_t time, t_philo *philo)
+// {
+// 	const size_t	time_to_die = get_ms_time() - philo->common->start_time ;
 
-	if (time < time_to_die)
-		usleep(time);
-	usleep(philo->common->time_to_die);
-	pthread_mutex_lock(&philo->common->mutex.data);
-	if (!philo->common->kill)
-		printf(DIE_FORMAT, get_ms_time() - philo->common->start_time,
-			philo->id);
-	philo->common->kill = true;
-	pthread_mutex_unlock(&philo->common->mutex.data);
-}
+// 	if (time < time_to_die)
+// 		usleep(time);
+// 	usleep(philo->common->time_to_die);
+// 	pthread_mutex_lock(&philo->common->mutex.data);
+// 	if (!philo->common->kill)
+// 		printf(DIE_FORMAT, get_ms_time() - philo->common->start_time,
+// 			philo->id);
+// 	philo->common->kill = true;
+// 	pthread_mutex_unlock(&philo->common->mutex.data);
+// }
 
 // static bool
 
@@ -73,7 +73,7 @@ static bool	philo_eat(t_philo *philo)
 	philo->last_eat = get_ms_time() - philo->common->start_time;
 	printf(EAT_FORMAT, philo->last_eat, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
-	philo_usleep(philo->common->time_to_eat, philo);
+	usleep(philo->common->time_to_eat);
 	philo->right_fork.taken = false;
 	philo->left_fork->taken = false;
 	return (false);
@@ -82,10 +82,22 @@ static bool	philo_eat(t_philo *philo)
 static bool	init_routine(t_philo *philo)
 {
 	printf(THINK_FORMAT, (size_t)0, philo->id);
+	if (philo->common->time_to_eat > philo->common->time_to_die)
+	{
+		pthread_mutex_unlock(&philo->common->mutex.data);
+		usleep(philo->common->time_to_die);
+		pthread_mutex_lock(&philo->common->mutex.data);
+		if (!philo->common->kill)
+			printf(DIE_FORMAT, get_ms_time() - philo->common->start_time,
+				philo->id);
+		philo->common->kill = true;
+		pthread_mutex_unlock(&philo->common->mutex.data);
+		return (true);
+	}
 	if (!philo->even)
 	{
 		pthread_mutex_unlock(&philo->common->mutex.data);
-		philo_usleep(MIN_TIME / 2, philo);
+		usleep(MIN_TIME / 2);
 		return (philo_eat(philo));
 	}
 	printf(FORK_FORMAT, (size_t)0, philo->id);
