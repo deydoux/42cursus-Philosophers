@@ -6,29 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 15:33:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:34:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
-
-// static bool	routine_forks(t_philo *philo)
-// {
-// 	const size_t	max_time = philo->common->start_time + philo->last_eat
-// 		+ philo->common->time_to_die;
-
-// 	pthread_mutex_lock(&philo->right_fork.mutex.data);
-// 	while (philo->right_fork.taken)
-// 	{
-// 		if (get_ms_time() >= max_time)
-// 		{
-// 			pthread_mutex_unlock(&philo->right_fork.mutex.data);
-// 			return (true);
-// 		}
-// 	}
-// 	philo->right_fork.taken = true;
-// 	pthread_mutex_unlock(&philo->right_fork.mutex.data);
-// }
 
 static bool	sleep_routine(t_philo *philo)
 {
