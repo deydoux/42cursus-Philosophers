@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 21:53:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:33:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_safe_mutex
 
 typedef struct s_philo_common
 {
-	bool			kill;
+	bool			exit;
 	bool			limit_eat;
 	size_t			must_eat;
 	size_t			start_time;

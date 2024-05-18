@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 23:03:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:33:16 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static bool	init_routine(t_philo *philo)
 void	*routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->common->mutex.data);
-	if (philo->common->kill)
+	if (philo->common->exit)
 	{
 		pthread_mutex_unlock(&philo->common->mutex.data);
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:40:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 23:30:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:33:16 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ bool	philo_print(t_philo *philo, char *format, size_t *time_ptr)
 
 	pthread_mutex_lock(&philo->common->mutex.data);
 	time = get_ms_time();
-	exit_code = philo->common->kill || time >= philo->die_time;
+	exit_code = philo->common->exit || time >= philo->die_time;
 	if (exit_code)
 	{
-		if (!philo->common->kill)
+		if (!philo->common->exit)
 		{
 			printf(DIE_FORMAT, time - philo->common->start_time, philo->id);
-			philo->common->kill = true;
+			philo->common->exit = true;
 		}
 	}
 	else if (format)
