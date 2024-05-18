@@ -6,19 +6,19 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 21:36:21 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 21:53:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-static bool	take_fork(t_philo_fork *fork, size_t die_time, t_philo *philo)
+static bool	take_fork(t_philo_fork *fork, t_philo *philo)
 {
 	pthread_mutex_lock(&fork->mutex.data);
 	while (fork->taken && !philo->common->kill)
 	{
 		usleep(100);
-		if (get_ms_time() >= die_time)
+		if (get_ms_time() >= philo->die_time)
 		{
 			pthread_mutex_unlock(&fork->mutex.data);
 			return (true);
@@ -36,12 +36,8 @@ static bool	take_fork(t_philo_fork *fork, size_t die_time, t_philo *philo)
 
 static bool	take_forks(t_philo *philo)
 {
-	size_t	die_time;
-
-	die_time = philo->common->start_time + philo->eat_time
-		+ philo->common->time_to_die;
-	if (take_fork(&philo->right_fork, die_time, philo)
-		|| take_fork(philo->left_fork, die_time, philo))
+	if (take_fork(&philo->right_fork, philo)
+		|| take_fork(philo->left_fork, philo))
 	{
 		pthread_mutex_lock(&philo->common->mutex.data);
 		if (!philo->common->kill)
@@ -65,9 +61,10 @@ bool	eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->common->mutex.data);
 		return (true);
 	}
-	philo->eat_time = get_ms_time() - philo->common->start_time;
-	printf(EAT_FORMAT, philo->eat_time, philo->id);
+	philo->die_time = get_ms_time();
+	printf(EAT_FORMAT, philo->die_time - philo->common->start_time, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
+	philo->die_time += philo->common->time_to_die;
 	if (philo_sleep(philo->common->time_to_eat, philo))
 		return (true);
 	philo->right_fork.taken = false;

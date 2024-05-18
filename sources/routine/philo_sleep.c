@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:22:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 16:00:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 22:02:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 bool	philo_sleep(useconds_t time, t_philo *philo)
 {
-	const size_t	time_to_die = get_ms_time() - philo->common->start_time;
+	size_t	current_time;
 
-	if (time < time_to_die)
+	current_time = get_ms_time();
+	if (current_time < philo->die_time
+		&& philo->die_time - current_time > time)
 	{
 		usleep(time);
 		return (false);
 	}
-	usleep(philo->common->time_to_die);
+	usleep(philo->die_time - current_time);
 	pthread_mutex_lock(&philo->common->mutex.data);
 	if (!philo->common->kill)
 		printf(DIE_FORMAT, get_ms_time() - philo->common->start_time,
