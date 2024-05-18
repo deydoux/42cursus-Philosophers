@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 15:50:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 18:14:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static bool	init_routine(t_philo *philo)
 	printf(EAT_FORMAT, (size_t)0, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
 	philo_sleep(philo->common->time_to_eat, philo);
+	philo->right_fork.taken = false;
+	philo->left_fork->taken = false;
 	return (false);
 }
 
