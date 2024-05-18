@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:49:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/17 16:04:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 17:54:01 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ bool	sleep_routine(t_philo *philo)
 	}
 	printf(SLEEP_FORMAT, get_ms_time() - philo->common->start_time, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
-	return (philo_sleep(philo->common.time_to_sleep, philo));
+	return (philo_sleep(philo->common->time_to_sleep, philo));
 }
