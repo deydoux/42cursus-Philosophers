@@ -6,17 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 21:55:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:03:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
-
-static bool	think(t_philo *philo)
-{
-	(void)philo;
-	return (true);
-}
 
 static bool	init_routine(t_philo *philo)
 {
@@ -25,7 +19,7 @@ static bool	init_routine(t_philo *philo)
 	{
 		pthread_mutex_unlock(&philo->common->mutex.data);
 		philo->die_time = philo->common->start_time
-			+ philo->common->time_to_die;
+			+ philo->common->time_to_die / 1000;
 		philo_sleep(MIN_TIME / 2, philo);
 		return (eat(philo));
 	}
@@ -33,7 +27,8 @@ static bool	init_routine(t_philo *philo)
 	printf(FORK_FORMAT, (size_t)0, philo->id);
 	printf(EAT_FORMAT, (size_t)0, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
-	philo->die_time = philo->common->start_time + philo->common->time_to_die;
+	philo->die_time = philo->common->start_time + philo->common->time_to_die
+		/ 1000;
 	philo_sleep(philo->common->time_to_eat, philo);
 	philo->right_fork.taken = false;
 	philo->left_fork->taken = false;

@@ -9,9 +9,11 @@ SOURCES				=	destroy_table.c				\
 						init_threads.c				\
 						philo.c						\
 						routine/eat.c				\
+						routine/philo_print.c		\
 						routine/philo_sleep.c		\
 						routine/routine.c			\
 						routine/sleep_routine.c		\
+						routine/think.c				\
 						utils/ft_bzero.c			\
 						utils/ft_calloc.c			\
 						utils/ft_memcpy.c			\
@@ -25,7 +27,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g #-fsanitize=thread
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
