@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/13 15:24:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 21:30:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ typedef struct s_philo
 {
 	bool			even;
 	size_t			eat_count;
+	size_t			eat_time;
 	size_t			id;
-	size_t			last_eat;
 	t_philo_common	*common;
 	t_philo_fork	*left_fork;
 	t_philo_fork	right_fork;

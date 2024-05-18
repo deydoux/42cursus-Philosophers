@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 21:05:57 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 21:30:51 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static bool	take_forks(t_philo *philo)
 {
 	size_t	max_time;
 
-	max_time = philo->common->start_time + philo->last_eat
+	max_time = philo->common->start_time + philo->eat_time
 		+ philo->common->time_to_die;
 	if (take_fork(&philo->right_fork, max_time, philo)
 		|| take_fork(philo->left_fork, max_time, philo))
@@ -65,8 +65,8 @@ bool	eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->common->mutex.data);
 		return (true);
 	}
-	philo->last_eat = get_ms_time() - philo->common->start_time;
-	printf(EAT_FORMAT, philo->last_eat, philo->id);
+	philo->eat_time = get_ms_time() - philo->common->start_time;
+	printf(EAT_FORMAT, philo->eat_time, philo->id);
 	pthread_mutex_unlock(&philo->common->mutex.data);
 	if (philo_sleep(philo->common->time_to_eat, philo))
 		return (true);
