@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 21:30:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:36:35 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,13 @@ static bool	init_thread(t_philo *philo)
 
 bool	init_threads(t_table *table)
 {
-	bool	error;
 	size_t	i;
 
-	error = false;
 	i = 0;
 	pthread_mutex_lock(&table->common.mutex.data);
-	while (!error && i < table->n_philo)
-		error = init_thread(&table->philos[i++]);
-	table->common.kill = error;
+	while (!table->common.exit && i < table->n_philo)
+		table->common.exit = init_thread(&table->philos[i++]);
 	table->common.start_time = get_ms_time();
 	pthread_mutex_unlock(&table->common.mutex.data);
-	return (error);
+	return (table->common.exit);
 }
