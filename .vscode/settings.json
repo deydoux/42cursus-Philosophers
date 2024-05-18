@@ -2,6 +2,6 @@
 	"makefile.launchConfigurations": [{
 		"cwd": "${workspaceFolder}",
 		"binaryPath": "${workspaceFolder}/philo",
-		"binaryArgs": ["5", "10000", "200", "500", "3"]
+		"binaryArgs": ["199", "600", "200", "200", "10"]
 	}]
 }
