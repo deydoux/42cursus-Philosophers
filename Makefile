@@ -9,6 +9,7 @@ SOURCES				=	destroy_table.c				\
 						init_threads.c				\
 						philo.c						\
 						routine/eat.c				\
+						routine/init_routine.c		\
 						routine/philo_print.c		\
 						routine/philo_sleep.c		\
 						routine/routine.c			\
