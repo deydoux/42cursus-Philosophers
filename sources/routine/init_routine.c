@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:45:48 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/19 19:14:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/19 19:42:58 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ static bool	odd_routine(t_philo *philo)
 	philo->die_time = philo->common->start_time
 		+ philo->common->time_to_die / 1000;
 	if (philo->last)
-		philo_sleep(philo->common->time_to_eat, philo);
-	philo_sleep(philo->common->time_to_eat / 2, philo);
+		philo_sleep(philo->common->time_to_eat * 1.5, philo);
+	else
+		philo_sleep(philo->common->time_to_eat / 2, philo);
 	return (eat_routine(philo));
 }
 
