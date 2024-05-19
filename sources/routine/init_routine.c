@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:45:48 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/19 18:52:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/19 18:58:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ static bool	odd_routine(t_philo *philo)
 
 bool	init_routine(t_philo *philo)
 {
+	if (philo->common->limit_eat && !philo->common->must_eat)
+	{
+		pthread_mutex_unlock(&philo->common->mutex.data);
+		return (true);
+	}
 	printf(THINK_FORMAT, (size_t)0, philo->id);
 	if (philo->even)
 		return (even_routine(philo));
