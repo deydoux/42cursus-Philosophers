@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/21 11:44:20 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:53:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_philo_common
 typedef struct s_philo_fork
 {
 	bool			taken;
+	t_safe_mutex	change_mutex;
 	t_safe_mutex	mutex;
 }	t_philo_fork;
 

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/13 13:04:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:54:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	destroy_thread(t_safe_thread thread)
 static void	destroy_philo(t_philo *philo)
 {
 	destroy_thread(philo->thread);
+	destroy_mutex(&philo->right_fork.change_mutex);
 	destroy_mutex(&philo->right_fork.mutex);
 }
 

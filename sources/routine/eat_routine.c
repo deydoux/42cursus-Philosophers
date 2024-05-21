@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/19 18:52:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:58:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 static bool	take_fork(t_philo_fork *fork, t_philo *philo)
 {
 	pthread_mutex_lock(&fork->mutex.data);
-	while (fork->taken && !philo_print(philo, NULL, NULL))
+	while (true)
+	{
+		pthread_mutex_lock(&fork->change_mutex.data);
+		if (!fork->taken)
+			break ;
+		pthread_mutex_unlock(&fork->change_mutex.data);
 		usleep(FORK_USLEEP);
+	}
 	fork->taken = true;
+	pthread_mutex_unlock(&fork->change_mutex.data);
 	pthread_mutex_unlock(&fork->mutex.data);
 	return (philo_print(philo, FORK_FORMAT, NULL));
 }
