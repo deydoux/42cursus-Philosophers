@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/21 17:58:56 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:08:42 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	take_fork(t_philo_fork *fork, t_philo *philo)
 	while (true)
 	{
 		pthread_mutex_lock(&fork->change_mutex.data);
-		if (!fork->taken)
+		if (!fork->taken || philo_print(philo, NULL, NULL))
 			break ;
 		pthread_mutex_unlock(&fork->change_mutex.data);
 		usleep(FORK_USLEEP);
@@ -41,8 +41,12 @@ bool	eat_routine(t_philo *philo)
 		return (true);
 	philo->die_time += philo->common->time_to_die / 1000;
 	philo_sleep(philo->common->time_to_eat, philo);
+	pthread_mutex_lock(&philo->right_fork.change_mutex.data);
 	philo->right_fork.taken = false;
+	pthread_mutex_unlock(&philo->right_fork.change_mutex.data);
+	pthread_mutex_lock(&philo->left_fork->change_mutex.data);
 	philo->left_fork->taken = false;
+	pthread_mutex_unlock(&philo->left_fork->change_mutex.data);
 	if (philo->common->limit_eat
 		&& ++philo->eat_count == philo->common->must_eat)
 		return (true);
