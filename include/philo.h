@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/19 19:00:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:44:20 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_safe_thread
 
 typedef struct s_philo
 {
-	bool			even;
 	bool			last;
+	bool			odd;
 	size_t			die_time;
 	size_t			eat_count;
 	size_t			id;

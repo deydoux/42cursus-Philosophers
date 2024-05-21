@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:45:48 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/19 19:42:58 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:45:07 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	init_routine(t_philo *philo)
 		return (true);
 	}
 	printf(THINK_FORMAT, (size_t)0, philo->id);
-	if (philo->even)
-		return (even_routine(philo));
-	return (odd_routine(philo));
+	if (philo->odd)
+		return (odd_routine(philo));
+	return (even_routine(philo));
 }
