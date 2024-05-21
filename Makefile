@@ -58,11 +58,11 @@ re					:	fclean all
 
 
 
-ARGS				=	200 120 60 60
+ARGS				=	200 600 200 200 5
 run					:	$(NAME)
 	./$^ $(ARGS)
 
-HELGRIND			=	valgrind --tool=helgrind #--default-suppressions=no
+HELGRIND			=	valgrind --tool=helgrind
 helgrind			:	$(NAME)
 	$(HELGRIND) ./$^ $(ARGS)
 
