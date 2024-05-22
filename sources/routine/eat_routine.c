@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/21 18:08:42 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/22 12:02:03 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,5 @@ bool	eat_routine(t_philo *philo)
 	pthread_mutex_lock(&philo->left_fork->change_mutex.data);
 	philo->left_fork->taken = false;
 	pthread_mutex_unlock(&philo->left_fork->change_mutex.data);
-	if (philo->common->limit_eat
-		&& ++philo->eat_count == philo->common->must_eat)
-		return (true);
 	return (false);
 }
