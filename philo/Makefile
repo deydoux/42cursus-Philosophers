@@ -55,17 +55,3 @@ fclean				:
 re					:	fclean all
 
 .PHONY				:	all bonus clean fclean re
-
-
-
-ARGS				=	200 600 200 200 5
-run					:	$(NAME)
-	./$^ $(ARGS)
-
-HELGRIND			=	valgrind --tool=helgrind
-helgrind			:	$(NAME)
-	$(HELGRIND) ./$^ $(ARGS)
-
-DRD					=	valgrind --tool=drd
-drd					:	$(NAME)
-	$(DRD) ./$^ $(ARGS)
