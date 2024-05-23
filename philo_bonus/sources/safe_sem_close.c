@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   safe_sem_close.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:58:38 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 18:32:43 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/23 18:52:35 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/23 18:53:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "philo.h"
 
-void	routine(t_philo philo)
+void	safe_sem_close(sem_t *sem)
 {
-	sem_wait(philo.write);
-	printf("%zu Hi!\n", philo.id);
-	sem_post(philo.write);
+	if (sem)
+		sem_close(sem);
 }

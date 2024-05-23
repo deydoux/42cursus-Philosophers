@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 17:09:20 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/23 18:55:09 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <fcntl.h>
 # include <semaphore.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <sys/stat.h>
 # include <sys/time.h>
@@ -47,5 +48,6 @@ bool	init_philo(int argc, char **argv, t_philo *philo);
 bool	init_processes(t_philo philo, pid_t **pids);
 bool	init_sleeper(pid_t *pid);
 void	routine(t_philo philo);
+void	safe_sem_close(sem_t *sem);
 
 #endif

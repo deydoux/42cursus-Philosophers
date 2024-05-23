@@ -8,6 +8,7 @@ SOURCES				=	get_ms_time.c					\
 						init_sleeper.c					\
 						philo.c							\
 						routine/routine.c				\
+						safe_sem_close.c				\
 						utils/ft_bzero.c				\
 						utils/ft_calloc.c				\
 						utils/ft_memcpy.c				\

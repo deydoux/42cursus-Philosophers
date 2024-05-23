@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 17:13:20 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/23 18:35:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ bool	init_processes(t_philo philo, pid_t **pids)
 			ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
 			return (true);
 		}
+		if (!(*pids)[philo.id - 1])
+			break ;
 	}
 	return (false);
 }
