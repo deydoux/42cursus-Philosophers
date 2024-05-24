@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sleeper.c                                     :+:      :+:    :+:   */
+/*   close_semaphores.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:32:21 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 12:44:58 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/24 11:44:39 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/24 11:46:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	sleeper_routine(void)
+static void	safe_sem_close(sem_t *sem)
 {
-	while (true)
-		sleep(-1);
+	if (sem)
+		sem_close(sem);
 }
 
-bool	init_sleeper(pid_t *pid)
+void	close_semaphores(t_philo philo)
 {
-	*pid = fork();
-	if (!*pid)
-		sleeper_routine();
-	if (*pid < 0)
-	{
-		ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
-		return (true);
-	}
-	return (false);
+	safe_sem_close(philo.forks);
+	safe_sem_close(philo.write);
 }

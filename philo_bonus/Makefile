@@ -1,6 +1,8 @@
 NAME				=	philo_bonus
 
-SOURCES				=	get_ms_time.c					\
+SOURCES				=	close_semaphores.c				\
+						get_ms_time.c					\
+						init_guard.c					\
 						init_philo/init_philo.c			\
 						init_philo/init_semaphores.c	\
 						init_philo/parse_args.c			\
@@ -8,7 +10,7 @@ SOURCES				=	get_ms_time.c					\
 						init_sleeper.c					\
 						philo.c							\
 						routine/routine.c				\
-						safe_sem_close.c				\
+						safe_kill.c						\
 						utils/ft_bzero.c				\
 						utils/ft_calloc.c				\
 						utils/ft_memcpy.c				\
