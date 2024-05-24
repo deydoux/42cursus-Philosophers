@@ -5,7 +5,6 @@ SOURCES				=	get_ms_time.c					\
 						init_philo/init_semaphores.c	\
 						init_philo/parse_args.c			\
 						init_processes.c				\
-						init_sleeper.c					\
 						philo.c							\
 						routine/routine.c				\
 						safe_sem_close.c				\
