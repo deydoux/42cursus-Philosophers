@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 12:09:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/23 18:55:09 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_philo
 	bool		last;
 	bool		limit_eat;
 	bool		odd;
-	pid_t		*pids;
 	pid_t		sleeper;
 	sem_t		*forks;
 	sem_t		*write;
@@ -44,13 +43,11 @@ typedef struct s_philo
 	useconds_t	time_to_sleep;
 }	t_philo;
 
-void	close_semaphores(t_philo philo);
 size_t	get_ms_time(void);
-bool	init_guard(t_philo philo, pid_t *pid);
 bool	init_philo(int argc, char **argv, t_philo *philo);
-bool	init_processes(t_philo *philo);
+bool	init_processes(t_philo philo, pid_t **pids);
 bool	init_sleeper(pid_t *pid);
 void	routine(t_philo philo);
-void	safe_kill(pid_t pid);
+void	safe_sem_close(sem_t *sem);
 
 #endif

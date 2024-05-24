@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 12:47:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/23 18:35:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ static bool	init_process(t_philo philo, pid_t *pid)
 	philo.odd = philo.id % 2;
 	*pid = fork();
 	if (!*pid)
-	{
-		free(philo.pids);
 		routine(philo);
-		close_semaphores(philo);
-		exit(EXIT_SUCCESS);
-	}
 	if (*pid < 0)
 	{
 		ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
@@ -32,21 +27,23 @@ static bool	init_process(t_philo philo, pid_t *pid)
 	return (false);
 }
 
-bool	init_processes(t_philo *philo)
+bool	init_processes(t_philo philo, pid_t **pids)
 {
-	philo->pids = ft_calloc(philo->n, sizeof(*philo->pids));
-	if (!philo->pids)
+	*pids = ft_calloc(philo.n, sizeof(**pids));
+	if (!pids)
 	{
 		ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
 		return (true);
 	}
-	while (philo->id++ < philo->n)
+	while (philo.id++ < philo.n)
 	{
-		if (init_process(*philo, &philo->pids[philo->id - 1]))
+		if (init_process(philo, &(*pids)[philo.id - 1]))
 		{
 			ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
 			return (true);
 		}
+		if (!(*pids)[philo.id - 1])
+			break ;
 	}
 	return (false);
 }
