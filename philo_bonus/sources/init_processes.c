@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 17:04:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/24 17:06:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static bool	init_process(t_philo philo, pid_t *pid)
 	*pid = fork();
 	if (!*pid)
 	{
+		free(philo.pids);
 		routine(philo);
 		safe_sem_close(philo.forks);
 		safe_sem_close(philo.write);
