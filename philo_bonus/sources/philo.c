@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 17:00:59 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/24 17:29:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	main(int argc, char **argv)
 		|| init_processes(&philo);
 	safe_sem_close(philo.forks);
 	safe_sem_close(philo.write);
-	free(philo.pids);
+	if (exit_code)
+		kill(0, SIGHUP);
+	else
+		if (wait_philos())
+			return (true);
 	return (exit_code);
 }

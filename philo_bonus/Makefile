@@ -14,7 +14,8 @@ SOURCES				=	get_ms_time.c					\
 						utils/ft_putstr_fd.c			\
 						utils/ft_strlcat.c				\
 						utils/ft_strlcpy.c				\
-						utils/ft_strlen.c
+						utils/ft_strlen.c				\
+						wait_philos.c
 
 SOURCES_DIR			=	sources
 INCLUDE_DIR			=	include

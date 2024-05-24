@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   wait_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:58:38 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 17:17:41 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/24 17:09:22 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/24 17:29:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "philo.h"
 
-void	routine(t_philo philo)
+bool	wait_philos(void)
 {
-	sem_wait(philo.write);
-	printf("%zu %zu Hi!\n", philo.id, get_ms_time());
-	sem_post(philo.write);
+	int	status;
+
+	while (waitpid(0, &status, 0) != -1)
+	{
+		if (status)
+		{
+			kill(0, SIGHUP);
+			return (true);
+		}
+	}
+	return (false);
 }
