@@ -6,24 +6,14 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:45:48 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/21 18:17:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/24 19:23:34 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-static bool	last_even_routine(t_philo *philo)
+static bool	odd_routine(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->common->mutex.data);
-	philo->die_time = philo->common->start_time + philo->common->time_to_die
-		/ 1000;
-	return (eat_routine(philo));
-}
-
-static bool	even_routine(t_philo *philo)
-{
-	if (philo->last)
-		return (last_even_routine(philo));
 	printf(FORK_FORMAT, (size_t)0, philo->id);
 	printf(FORK_FORMAT, (size_t)0, philo->id);
 	printf(EAT_FORMAT, (size_t)0, philo->id);
@@ -40,7 +30,7 @@ static bool	even_routine(t_philo *philo)
 	return (false);
 }
 
-static bool	odd_routine(t_philo *philo)
+static bool	even_routine(t_philo *philo)
 {
 	pthread_mutex_unlock(&philo->common->mutex.data);
 	philo->die_time = philo->common->start_time + philo->common->time_to_die
