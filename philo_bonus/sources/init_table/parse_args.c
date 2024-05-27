@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 12:15:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 12:16:16 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
+/*   Updated: 2024/04/28 21:11:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "init_table.h"
 
 static bool	safe_atos(char *str, size_t *n)
 {
@@ -51,18 +51,18 @@ static bool	parse_time(char *str, useconds_t *usec)
 	return (false);
 }
 
-bool	parse_args(int argc, char **argv, t_philo *philo)
+bool	parse_args(int argc, char **argv, t_table *table)
 {
 	if (MIN_ARGC > argc || argc > MAX_ARGC)
 	{
 		ft_putstr_fd(USAGE, STDERR_FILENO);
 		return (true);
 	}
-	philo->limit_eat = argc == 6;
-	return (safe_atos(argv[1], &philo->n)
-		|| parse_time(argv[2], &philo->time_to_die)
-		|| parse_time(argv[3], &philo->time_to_eat)
-		|| parse_time(argv[4], &philo->time_to_sleep)
-		|| (philo->limit_eat
-			&& safe_atos(argv[5], &philo->must_eat)));
+	table->common.limit_eat = argc == 6;
+	return (safe_atos(argv[1], &table->n_philo)
+		|| parse_time(argv[2], &table->common.time_to_die)
+		|| parse_time(argv[3], &table->common.time_to_eat)
+		|| parse_time(argv[4], &table->common.time_to_sleep)
+		|| (table->common.limit_eat
+			&& safe_atos(argv[5], &table->common.must_eat)));
 }

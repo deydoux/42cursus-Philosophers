@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   init_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 07:36:46 by deydoux          ###   ########.fr       */
+/*   Created: 2024/04/04 16:48:19 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/27 07:56:09 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "init_table.h"
 
-void	*routine(t_philo *philo)
+bool	init_table(int argc, char **argv, t_table *table)
 {
-	sem_wait(philo->common->lock_sem);
-	if (philo->common->exit)
-	{
-		sem_post(philo->common->lock_sem);
-		return (NULL);
-	}
-	if (!init_routine(philo))
-		while (!sleep_routine(philo) && !think_routine(philo)
-			&& !eat_routine(philo))
-			;
-	return (NULL);
+	ft_bzero(table, sizeof(*table));
+	return (parse_args(argc, argv, table)
+		|| init_philos(table)
+		|| init_semaphores(table));
 }

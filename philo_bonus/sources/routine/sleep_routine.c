@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_philo.c                                       :+:      :+:    :+:   */
+/*   sleep_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 16:01:41 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/17 15:49:47 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/22 12:03:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "routine.h"
 
-bool	init_philo(int argc, char **argv, t_philo *philo)
+bool	sleep_routine(t_philo *philo)
 {
-	ft_bzero(philo, sizeof(*philo));
-	return (parse_args(argc, argv, philo) || init_semaphores(philo));
+	if (philo_print(philo, SLEEP_FORMAT, NULL))
+		return (true);
+	if (philo->common->limit_eat
+		&& ++philo->eat_count == philo->common->must_eat)
+		return (true);
+	philo_sleep(philo->common->time_to_sleep, philo);
+	return (false);
 }

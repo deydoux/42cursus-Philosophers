@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_sem_close.c                                   :+:      :+:    :+:   */
+/*   philo_sleep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 18:52:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 18:53:04 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/17 15:22:03 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/18 23:23:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "routine.h"
 
-void	safe_sem_close(sem_t *sem)
+void	philo_sleep(useconds_t time, t_philo *philo)
 {
-	if (sem)
-		sem_close(sem);
+	size_t	current_time;
+
+	current_time = get_ms_time();
+	if (current_time + time / 1000 >= philo->die_time)
+		time = philo->die_time - current_time;
+	usleep(time);
 }

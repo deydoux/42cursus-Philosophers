@@ -5,27 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 12:18:15 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/23 13:16:21 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/27 07:45:31 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/27 07:55:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "init_table.h"
 
-static bool	init_semaphore(sem_t **sem, char *name, unsigned int value)
+static bool	init_semaphore(char *name, unsigned int val, sem_t **sem)
 {
 	sem_unlink(name);
-	*sem = sem_open(name, O_CREAT | O_EXCL, 0, value);
-	return (!*sem);
-}
-
-bool	init_semaphores(t_philo *philo)
-{
-	if (init_semaphore(&philo->forks, SEM_NAME_FORKS, philo->n % 2)
-		|| init_semaphore(&philo->write, SEM_NAME_WRITE, 0))
+	*sem = sem_open(name, O_CREAT, 0, val);
+	if (!*sem)
 	{
 		ft_putstr_fd(ERR_INIT_SEM, STDERR_FILENO);
 		return (true);
 	}
 	return (false);
+}
+
+bool	init_semaphores(t_table *table)
+{
+	return (init_semaphore(SEM_NAME_FORKS, table->n_philo % 2,
+			&table->common.forks_sem)
+		|| init_semaphore(SEM_NAME_LOCK, 0, &table->common.lock_sem));
 }

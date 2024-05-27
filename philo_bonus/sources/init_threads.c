@@ -1,49 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_processes.c                                   :+:      :+:    :+:   */
+/*   init_threads.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 17:14:19 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/24 20:57:01 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static bool	init_process(t_philo philo)
+static bool	init_thread(t_philo *philo)
 {
-	pid_t	pid;
-
-	philo.last = philo.id == philo.n;
-	philo.odd = philo.id % 2;
-	pid = fork();
-	if (!pid)
+	philo->thread.initialized = !pthread_create(&philo->thread.data, NULL,
+			(void *)routine, philo);
+	if (!philo->thread.initialized)
 	{
-		routine(philo);
-		safe_sem_close(philo.forks);
-		safe_sem_close(philo.write);
-		exit(EXIT_SUCCESS);
-	}
-	if (pid < 0)
-	{
-		ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
+		ft_putstr_fd(ERR_INIT_THREADS, STDERR_FILENO);
 		return (true);
 	}
 	return (false);
 }
 
-bool	init_processes(t_philo *philo)
+bool	init_threads(t_table *table)
 {
-	while (philo->id++ < philo->n)
-	{
-		if (init_process(*philo))
-		{
-			ft_putstr_fd(ERR_INIT_PROCESS, STDERR_FILENO);
-			return (true);
-		}
-	}
-	sem_post(philo->write);
-	return (false);
+	size_t	i;
+
+	i = 0;
+	while (!table->common.exit && i < table->n_philo)
+		table->common.exit = init_thread(&table->philos[i++]);
+	table->common.start_time = get_ms_time();
+	sem_post(table->common.lock_sem);
+	return (table->common.exit);
 }

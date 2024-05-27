@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wait_philos.c                                      :+:      :+:    :+:   */
+/*   think_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 17:09:22 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 17:29:40 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/18 22:04:12 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/19 18:53:01 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "routine.h"
 
-bool	wait_philos(void)
+bool	think_routine(t_philo *philo)
 {
-	int	status;
-
-	while (waitpid(0, &status, 0) != -1)
-	{
-		if (status)
-		{
-			kill(0, SIGHUP);
-			return (true);
-		}
-	}
-	return (false);
+	return (philo_print(philo, THINK_FORMAT, NULL));
 }

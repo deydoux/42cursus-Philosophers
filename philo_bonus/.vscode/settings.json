@@ -1,9 +1,7 @@
 {
-	"makefile.launchConfigurations": [
-		{
-			"cwd": "/home/deydoux/42cursus/Philosophers/philo_bonus",
-			"binaryPath": "/home/deydoux/42cursus/Philosophers/philo_bonus/philo_bonus",
-			"binaryArgs": ["200", "300", "100", "100", "5"]
-		}
-	]
+	"files.associations": {
+		"*.h": "c",
+		"string": "c",
+		"string_view": "c"
+	}
 }
