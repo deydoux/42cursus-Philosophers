@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:31:51 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 07:41:34 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/27 08:02:39 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static bool	take_fork(t_philo *philo)
 	pids[0] = fork();
 	if (!pids[0])
 	{
+		sem_wait(philo->common->forks_sem);
 		sem_wait(philo->common->forks_sem);
 		exit(EXIT_SUCCESS);
 	}
