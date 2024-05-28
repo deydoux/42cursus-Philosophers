@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 07:33:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/28 18:49:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <pthread.h>
 # include <semaphore.h>
-#include <signal.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <sys/time.h>
+# include <sys/wait.h>
 # include "philo_utils.h"
 
 # define ERR_INIT_THREADS	"Failed to init threads\n"

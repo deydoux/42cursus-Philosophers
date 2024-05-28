@@ -6,13 +6,13 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:40:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 07:36:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/28 18:39:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 
-bool	philo_print(t_philo *philo, char *format, size_t *time_ptr)
+bool	philo_print(t_philo *philo, char *format, size_t *time_ptr, bool fork)
 {
 	bool	exit_code;
 	size_t	time;
@@ -25,6 +25,8 @@ bool	philo_print(t_philo *philo, char *format, size_t *time_ptr)
 		if (!philo->common->exit)
 		{
 			printf(DIE_FORMAT, time - philo->common->start_time, philo->id);
+			if (fork)
+				return (true);
 			philo->common->exit = true;
 		}
 	}

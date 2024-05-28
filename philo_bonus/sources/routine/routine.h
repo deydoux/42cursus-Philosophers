@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:50:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 13:42:56 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/28 18:50:36 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define ROUTINE_H
 
 # include <stdio.h>
-# include <sys/wait.h>
 # include "philo.h"
 
 # define DIE_FORMAT		"%zu %zu died\n"
@@ -27,9 +26,10 @@
 
 bool	eat_routine(t_philo *philo);
 bool	init_routine(t_philo *philo);
-bool	philo_print(t_philo *philo, char *format, size_t *time_ptr);
+bool	philo_print(t_philo *philo, char *format, size_t *time_ptr, bool fork);
 void	philo_sleep(useconds_t time, t_philo *philo);
 bool	sleep_routine(t_philo *philo);
+bool	take_forks(t_philo *philo);
 bool	think_routine(t_philo *philo);
 
 #endif

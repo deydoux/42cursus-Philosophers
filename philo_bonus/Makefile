@@ -14,6 +14,7 @@ SOURCES				=	destroy_table.c					\
 						routine/philo_sleep.c			\
 						routine/routine.c				\
 						routine/sleep_routine.c			\
+						routine/take_forks.c			\
 						routine/think_routine.c			\
 						utils/ft_bzero.c				\
 						utils/ft_calloc.c				\

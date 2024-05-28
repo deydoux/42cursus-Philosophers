@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:49:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/22 12:03:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/28 18:50:51 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	sleep_routine(t_philo *philo)
 {
-	if (philo_print(philo, SLEEP_FORMAT, NULL))
+	if (philo_print(philo, SLEEP_FORMAT, NULL, false))
 		return (true);
 	if (philo->common->limit_eat
 		&& ++philo->eat_count == philo->common->must_eat)
