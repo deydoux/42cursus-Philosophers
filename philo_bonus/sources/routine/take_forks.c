@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:11:55 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/28 18:53:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/28 19:04:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	monitoring_process(t_philo *philo, pid_t *pid)
 		return (*pid < 0);
 	time = get_ms_time();
 	if (time < philo->die_time)
-		usleep(philo->die_time - time);
+		usleep((philo->die_time - time) * 1000);
 	philo_print(philo, DIE_FORMAT, NULL, true);
 	exit(EXIT_FAILURE);
 }
