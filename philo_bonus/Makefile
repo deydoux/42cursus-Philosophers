@@ -7,14 +7,14 @@ SOURCES				=	destroy_table.c					\
 						init_table/init_table.c			\
 						init_table/parse_args.c			\
 						init_threads.c					\
+						monitor.c						\
 						philo.c							\
+						philo_print.c					\
 						routine/eat_routine.c			\
 						routine/init_routine.c			\
-						routine/philo_print.c			\
 						routine/philo_sleep.c			\
 						routine/routine.c				\
 						routine/sleep_routine.c			\
-						routine/take_forks.c			\
 						routine/think_routine.c			\
 						utils/ft_bzero.c				\
 						utils/ft_calloc.c				\

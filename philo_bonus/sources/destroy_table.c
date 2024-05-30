@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 20:54:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/30 15:52:33 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	destroy_philos(t_philo *philos, size_t n)
 void	destroy_table(t_table *table)
 {
 	destroy_philos(table->philos, table->n_philo);
+	destroy_semaphore(table->common.die_time_sem);
 	destroy_semaphore(table->common.forks_sem);
 	destroy_semaphore(table->common.lock_sem);
 }

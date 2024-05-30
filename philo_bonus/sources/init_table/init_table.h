@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:54:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 13:42:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/30 15:51:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define ERR_PARSE_USEC		"Time arguments overflowed useconds_t\n"
 # define MAX_ARGC			6
 # define MIN_ARGC			5
+# define SEM_NAME_DIE_TIME	"/philo_die_time"
 # define SEM_NAME_FORKS		"/philo_forks"
 # define SEM_NAME_LOCK		"/philo_lock"
 # define USAGE				"Usage: ./philo number_of_philosophers time_to_die \

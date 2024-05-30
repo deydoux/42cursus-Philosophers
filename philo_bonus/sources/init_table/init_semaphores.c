@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 07:45:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/27 07:55:30 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/30 15:52:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static bool	init_semaphore(char *name, unsigned int val, sem_t **sem)
 
 bool	init_semaphores(t_table *table)
 {
-	return (init_semaphore(SEM_NAME_FORKS, table->n_philo % 2,
+	return (init_semaphore(SEM_NAME_DIE_TIME, 1, &table->common.die_time_sem)
+		|| init_semaphore(SEM_NAME_FORKS, table->n_philo % 2,
 			&table->common.forks_sem)
 		|| init_semaphore(SEM_NAME_LOCK, 0, &table->common.lock_sem));
 }

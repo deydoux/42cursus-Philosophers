@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/28 18:49:11 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/30 16:44:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 # include <semaphore.h>
 # include <signal.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <sys/time.h>
 # include <sys/wait.h>
 # include "philo_utils.h"
 
+# define DIE_FORMAT		"%zu %zu died\n"
 # define ERR_INIT_THREADS	"Failed to init threads\n"
 
 typedef struct s_philo_common
 {
 	bool			exit;
 	bool			limit_eat;
+	sem_t			*die_time_sem;
 	sem_t			*forks_sem;
 	sem_t			*lock_sem;
 	size_t			must_eat;
@@ -63,6 +66,8 @@ void	destroy_table(t_table *table);
 size_t	get_ms_time(void);
 bool	init_table(int argc, char **argv, t_table *table);
 bool	init_threads(t_table *table);
+void	monitor(t_table *table);
+bool	philo_print(t_philo *philo, char *format, size_t *time_ptr);
 void	*routine(t_philo *philo);
 
 #endif
