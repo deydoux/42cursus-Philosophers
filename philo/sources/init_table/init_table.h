@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:54:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/07 15:01:59 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/31 09:28:57 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define ERR_INIT_MUTEXES	"Failed to init mutexes\n"
 # define ERR_INIT_PHILOS	"Failed to init philos\n"
-# define ERR_PARSE_SIZE		"Arguments overflowed size_t\n"
-# define ERR_PARSE_USEC		"Time arguments overflowed useconds_t\n"
+# define ERR_PARSE_TIME		"Time arguments overflowed on ms conversion\n"
+# define ERR_SAFE_ATOUI		"Arguments overflowed unsigned int\n"
 # define MAX_ARGC			6
 # define MIN_ARGC			5
 # define USAGE				"Usage: ./philo number_of_philosophers time_to_die \

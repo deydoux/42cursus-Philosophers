@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/24 19:21:50 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/31 09:30:32 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_philo_common
 {
 	bool			exit;
 	bool			limit_eat;
-	size_t			must_eat;
 	size_t			start_time;
 	t_safe_mutex	mutex;
+	unsigned int	must_eat;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_die;
 	useconds_t		time_to_sleep;
@@ -55,19 +55,19 @@ typedef struct s_philo
 {
 	bool			odd;
 	size_t			die_time;
-	size_t			eat_count;
 	size_t			id;
 	t_philo_common	*common;
 	t_philo_fork	*left_fork;
 	t_philo_fork	right_fork;
 	t_safe_thread	thread;
+	unsigned int	eat_count;
 }	t_philo;
 
 typedef struct s_table
 {
-	size_t			n_philo;
 	t_philo			*philos;
 	t_philo_common	common;
+	unsigned int	n_philo;
 }	t_table;
 
 void	destroy_table(t_table *table);
