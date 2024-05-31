@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/30 16:44:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/31 22:53:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,52 +22,44 @@
 # include <sys/wait.h>
 # include "philo_utils.h"
 
-# define DIE_FORMAT		"%zu %zu died\n"
+# define ERR_INIT_PROCESSES	"Failed to init processes\n"
 # define ERR_INIT_THREADS	"Failed to init threads\n"
-
-typedef struct s_philo_common
-{
-	bool			exit;
-	bool			limit_eat;
-	sem_t			*die_time_sem;
-	sem_t			*forks_sem;
-	sem_t			*lock_sem;
-	size_t			must_eat;
-	size_t			start_time;
-	useconds_t		time_to_eat;
-	useconds_t		time_to_die;
-	useconds_t		time_to_sleep;
-}	t_philo_common;
-
-typedef struct s_safe_thread
-{
-	bool		initialized;
-	pthread_t	data;
-}	t_safe_thread;
+# define FORMAT_DIE			"%zu %zu died\n"
+# define FORMAT_EAT			"%zu %zu is eating\n"
+# define FORMAT_FORK		"%zu %zu has taken a fork\n"
+# define FORMAT_SLEEP		"%zu %zu is sleeping\n"
+# define FORMAT_THINK		"%zu %zu is thinking\n"
 
 typedef struct s_philo
 {
-	bool			odd;
-	size_t			die_time;
-	size_t			eat_count;
+	_Atomic size_t	die_time;
+	bool			limit_eat;
+	pthread_t		thread;
+	sem_t			*forks_sem;
+	sem_t			*write_sem;
 	size_t			id;
-	t_philo_common	*common;
-	t_safe_thread	thread;
+	size_t			start_time;
+	unsigned int	eat_count;
+	unsigned int	must_eat;
+	unsigned int	n;
+	useconds_t		time_to_die;
+	useconds_t		time_to_eat;
+	useconds_t		time_to_sleep;
 }	t_philo;
 
 typedef struct s_table
 {
-	size_t			n_philo;
-	t_philo			*philos;
-	t_philo_common	common;
+	pid_t	*pids;
+	t_philo	philo;
 }	t_table;
 
 void	destroy_table(t_table *table);
 size_t	get_ms_time(void);
-bool	init_table(int argc, char **argv, t_table *table);
-bool	init_threads(t_table *table);
-void	monitor(t_table *table);
-bool	philo_print(t_philo *philo, char *format, size_t *time_ptr);
+bool	init_philo(int argc, char **argv, t_philo *philo);
+bool	init_processes(t_table *table);
+void	init_thread(t_philo *philo);
+void	philo_exit(int status, t_philo *philo);
+void	philo_print(t_philo *philo, char *format, size_t *time_ptr);
 void	*routine(t_philo *philo);
 
 #endif

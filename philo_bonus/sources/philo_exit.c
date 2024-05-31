@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep_routine.c                                    :+:      :+:    :+:   */
+/*   philo_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 15:49:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/22 12:03:05 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/31 22:27:17 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/31 22:54:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "philo.h"
 
-bool	sleep_routine(t_philo *philo)
+void	philo_exit(int status, t_philo *philo)
 {
-	if (philo_print(philo, SLEEP_FORMAT, NULL))
-		return (true);
-	if (philo->common->limit_eat
-		&& ++philo->eat_count == philo->common->must_eat)
-		return (true);
-	philo_sleep(philo->common->time_to_sleep, philo);
-	return (false);
+	sem_close(philo->forks_sem);
+	sem_close(philo->write_sem);
+	pthread_join(philo->thread, NULL);
+	exit(status);
 }

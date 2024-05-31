@@ -6,15 +6,15 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/04/28 21:11:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/05/31 10:21:50 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_table.h"
+#include "init_philo.h"
 
-static bool	safe_atos(char *str, size_t *n)
+static bool	safe_atoui(char *str, unsigned int *n)
 {
-	size_t	tmp;
+	unsigned int	tmp;
 
 	tmp = 0;
 	*n = 0;
@@ -23,7 +23,7 @@ static bool	safe_atos(char *str, size_t *n)
 		tmp = tmp * 10 + *str++ - '0';
 		if (tmp < *n)
 		{
-			ft_putstr_fd(ERR_PARSE_SIZE, STDERR_FILENO);
+			ft_putstr_fd(ERR_SAFE_ATOUI, STDERR_FILENO);
 			return (true);
 		}
 		*n = tmp;
@@ -38,31 +38,30 @@ static bool	safe_atos(char *str, size_t *n)
 
 static bool	parse_time(char *str, useconds_t *usec)
 {
-	size_t	n;
+	unsigned int	n;
 
-	if (safe_atos(str, &n))
+	if (safe_atoui(str, &n))
 		return (true);
 	*usec = n * 1000;
 	if (*usec < n)
 	{
-		ft_putstr_fd(ERR_PARSE_USEC, STDERR_FILENO);
+		ft_putstr_fd(ERR_PARSE_TIME, STDERR_FILENO);
 		return (true);
 	}
 	return (false);
 }
 
-bool	parse_args(int argc, char **argv, t_table *table)
+bool	parse_args(int argc, char **argv, t_philo *philo)
 {
 	if (MIN_ARGC > argc || argc > MAX_ARGC)
 	{
 		ft_putstr_fd(USAGE, STDERR_FILENO);
 		return (true);
 	}
-	table->common.limit_eat = argc == 6;
-	return (safe_atos(argv[1], &table->n_philo)
-		|| parse_time(argv[2], &table->common.time_to_die)
-		|| parse_time(argv[3], &table->common.time_to_eat)
-		|| parse_time(argv[4], &table->common.time_to_sleep)
-		|| (table->common.limit_eat
-			&& safe_atos(argv[5], &table->common.must_eat)));
+	philo->limit_eat = argc == 6;
+	return (safe_atoui(argv[1], &philo->n)
+		|| parse_time(argv[2], &philo->time_to_die)
+		|| parse_time(argv[3], &philo->time_to_eat)
+		|| parse_time(argv[4], &philo->time_to_sleep)
+		|| (philo->limit_eat && safe_atoui(argv[5], &philo->must_eat)));
 }

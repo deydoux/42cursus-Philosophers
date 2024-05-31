@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think_routine.c                                    :+:      :+:    :+:   */
+/*   init_sems.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 22:04:12 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/30 15:28:44 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/27 07:45:31 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/31 10:33:34 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "routine.h"
+#include "init_philo.h"
 
-bool	think_routine(t_philo *philo)
+static bool	init_sem(char *name, unsigned int val, sem_t **sem)
 {
-	return (philo_print(philo, THINK_FORMAT, NULL));
+	sem_unlink(name);
+	*sem = sem_open(name, O_CREAT, 0, val);
+	if (!*sem)
+	{
+		ft_putstr_fd(ERR_INIT_SEM, STDERR_FILENO);
+		return (true);
+	}
+	return (false);
+}
+
+bool	init_sems(t_philo *philo)
+{
+	return (init_sem(SEM_NAME_FORKS, philo->n % 2, &philo->forks_sem)
+		|| init_sem(SEM_NAME_WRITE, 1, &philo->write_sem));
 }

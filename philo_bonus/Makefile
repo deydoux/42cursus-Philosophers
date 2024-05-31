@@ -1,27 +1,22 @@
 NAME				=	philo_bonus
 
-SOURCES				=	destroy_table.c					\
-						get_ms_time.c					\
-						init_table/init_philos.c		\
-						init_table/init_semaphores.c	\
-						init_table/init_table.c			\
-						init_table/parse_args.c			\
-						init_threads.c					\
-						monitor.c						\
-						philo.c							\
-						philo_print.c					\
-						routine/eat_routine.c			\
-						routine/init_routine.c			\
-						routine/philo_sleep.c			\
-						routine/routine.c				\
-						routine/sleep_routine.c			\
-						routine/think_routine.c			\
-						utils/ft_bzero.c				\
-						utils/ft_calloc.c				\
-						utils/ft_memcpy.c				\
-						utils/ft_putstr_fd.c			\
-						utils/ft_strlcat.c				\
-						utils/ft_strlcpy.c				\
+SOURCES				=	destroy_table.c			\
+						get_ms_time.c			\
+						init_philo/init_philo.c	\
+						init_philo/init_sems.c	\
+						init_philo/parse_args.c	\
+						init_processes.c		\
+						init_thread.c			\
+						philo.c					\
+						philo_print.c			\
+						philo_exit.c			\
+						routine.c				\
+						utils/ft_bzero.c		\
+						utils/ft_calloc.c		\
+						utils/ft_memcpy.c		\
+						utils/ft_putstr_fd.c	\
+						utils/ft_strlcat.c		\
+						utils/ft_strlcpy.c		\
 						utils/ft_strlen.c
 
 SOURCES_DIR			=	sources
@@ -29,7 +24,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 

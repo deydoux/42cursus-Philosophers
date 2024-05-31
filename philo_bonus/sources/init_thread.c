@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_print.c                                      :+:      :+:    :+:   */
+/*   init_thread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 22:40:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 22:30:57 by deydoux          ###   ########.fr       */
+/*   Created: 2024/05/31 10:59:34 by deydoux           #+#    #+#             */
+/*   Updated: 2024/05/31 22:53:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_print(t_philo *philo, char *format, size_t *time_ptr)
+static void	monitor(t_philo *philo)
 {
+	size_t	die_time;
 	size_t	time;
 
-	sem_wait(philo->write_sem);
-	time = get_ms_time();
-	if (time >= philo->die_time)
+	usleep(philo->time_to_eat / 2);
+	while (true)
 	{
-		printf(FORMAT_DIE, time - philo->start_time, philo->id);
+		die_time = philo->die_time;
+		time = get_ms_time();
+		if (die_time > time)
+			usleep(die_time - time);
+		philo_print(philo, NULL, NULL);
+	}
+}
+
+void	init_thread(t_philo *philo)
+{
+	if (pthread_create(&philo->thread, NULL, (void *)routine, philo))
+	{
+		sem_wait(philo->write_sem);
+		ft_putstr_fd(ERR_INIT_THREADS, STDERR_FILENO);
 		philo_exit(EXIT_FAILURE, philo);
 	}
-	else if (format)
-		printf(format, time - philo->start_time, philo->id);
-	sem_post(philo->write_sem);
-	if (time_ptr)
-		*time_ptr = time;
+	monitor(philo);
 }
