@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:56:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 19:14:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 22:03:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static bool	init_process(t_table *table, pid_t *pid)
 	{
 		free(table->pids);
 		init_threads(&table->philo);
-		philo_exit(EXIT_SUCCESS, &table->philo);
 	}
 	return (*pid <= 0);
 }

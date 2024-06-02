@@ -9,7 +9,6 @@ SOURCES				=	destroy_table.c			\
 						init_threads.c			\
 						philo.c					\
 						philo_print.c			\
-						philo_exit.c			\
 						routine.c				\
 						utils/ft_bzero.c		\
 						utils/ft_calloc.c		\
@@ -24,7 +23,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread -g
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror -pthread
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
