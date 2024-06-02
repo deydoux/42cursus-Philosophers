@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:18:39 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 22:39:10 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:07:25 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	destroy_table(t_table *table)
 	while (--table->philo.id)
 		safe_kill(table->pids[table->philo.id - 1]);
 	free(table->pids);
+	sem_close(table->philo.exit_sem);
 	sem_close(table->philo.forks_sem);
 	sem_close(table->philo.write_sem);
 }

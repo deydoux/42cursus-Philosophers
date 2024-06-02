@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 22:53:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:08:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_philo
 	_Atomic size_t	die_time;
 	bool			limit_eat;
 	pthread_t		thread;
+	sem_t			*exit_sem;
 	sem_t			*forks_sem;
 	sem_t			*write_sem;
 	size_t			id;

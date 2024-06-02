@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 09:16:53 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 21:21:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:06:16 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define ERR_SAFE_ATOUI		"Arguments overflowed unsigned int\n"
 # define MAX_ARGC			6
 # define MIN_ARGC			5
+# define SEM_NAME_EXIT		"/philo_exit"
 # define SEM_NAME_FORKS		"/philo_forks"
 # define SEM_NAME_WRITE		"/philo_write"
 # define USAGE				"Usage: ./philo_bonus number_of_philosophers\
