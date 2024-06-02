@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 07:45:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 19:06:51 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:12:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "philo.h"
 
 static bool	init_sem(char *name, unsigned int val, sem_t **sem)
 {

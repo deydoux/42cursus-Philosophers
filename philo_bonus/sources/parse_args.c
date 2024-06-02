@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:55:47 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 10:21:50 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:12:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "philo.h"
 
 static bool	safe_atoui(char *str, unsigned int *n)
 {

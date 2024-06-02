@@ -2,9 +2,9 @@ NAME				=	philo_bonus
 
 SOURCES				=	destroy_table.c			\
 						get_ms_time.c			\
-						init_philo/init_philo.c	\
-						init_philo/init_sems.c	\
-						init_philo/parse_args.c	\
+						init_philo.c			\
+						init_sems.c				\
+						parse_args.c			\
 						init_processes.c		\
 						init_thread.c			\
 						philo.c					\

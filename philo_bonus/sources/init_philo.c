@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 09:17:22 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 10:17:29 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:11:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_philo.h"
+#include "philo.h"
 
 bool	init_philo(int argc, char **argv, t_philo *philo)
 {
