@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_thread.c                                      :+:      :+:    :+:   */
+/*   init_threads.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:59:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/31 22:53:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:14:07 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	monitor(t_philo *philo)
 	}
 }
 
-void	init_thread(t_philo *philo)
+void	init_threads(t_philo *philo)
 {
 	if (pthread_create(&philo->thread, NULL, (void *)routine, philo))
 	{

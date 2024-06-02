@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 19:10:53 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:14:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"
 
 typedef struct s_philo
 {
+	_Atomic bool	exit;
 	_Atomic size_t	die_time;
 	bool			limit_eat;
 	pthread_t		thread;
@@ -73,7 +74,7 @@ bool	parse_args(int argc, char **argv, t_philo *philo);
 size_t	get_ms_time(void);
 void	*routine(t_philo *philo);
 void	destroy_table(t_table *table);
-void	init_thread(t_philo *philo);
+void	init_threads(t_philo *philo);
 void	philo_exit(int status, t_philo *philo);
 void	philo_print(t_philo *philo, char *format, size_t *time_ptr);
 

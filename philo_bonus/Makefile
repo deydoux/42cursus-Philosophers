@@ -6,7 +6,7 @@ SOURCES				=	destroy_table.c			\
 						init_sems.c				\
 						parse_args.c			\
 						init_processes.c		\
-						init_thread.c			\
+						init_threads.c			\
 						philo.c					\
 						philo_print.c			\
 						philo_exit.c			\
