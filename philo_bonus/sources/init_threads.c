@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:59:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 22:50:19 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/05 11:32:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	*monitor(t_philo *philo)
 	size_t	die_time;
 	size_t	time;
 
-	usleep(philo->time_to_eat / 2);
+	if (philo->time_to_eat < philo->time_to_die)
+		usleep(philo->time_to_eat / 2);
+	else
+		usleep(philo->time_to_die / 2);
 	while (true)
 	{
 		die_time = philo->die_time;
