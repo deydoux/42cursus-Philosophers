@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/06 16:59:52 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 17:02:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ typedef struct s_table
 	t_philo	philo;
 }	t_table;
 
+void	close_sems(t_philo philo);
+void	destroy_table(t_table *table);
+size_t	get_ms_time(void);
 bool	init_philo(int argc, char **argv, t_philo *philo);
 bool	init_processes(t_table *table);
 bool	init_sems(t_philo *philo);
+void	init_threads(t_philo *philo);
 bool	parse_args(int argc, char **argv, t_philo *philo);
 bool	philo_print(t_philo *philo, char *format, size_t *time_ptr);
-size_t	get_ms_time(void);
-void	close_sems(t_philo philo);
 void	*routine(t_philo *philo);
-void	destroy_table(t_table *table);
-void	init_threads(t_philo *philo);
 
 #endif
