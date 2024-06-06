@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:59:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/06 17:00:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 17:23:07 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void	*monitor(t_philo *philo)
 		time = get_ms_time();
 		if (die_time > time)
 			usleep(die_time - time);
-		if (philo_print(philo, NULL, NULL))
+		if ((philo->limit_eat && philo->eat_count == philo->must_eat)
+			|| philo_print(philo, NULL, NULL))
 			break ;
 	}
 	return (NULL);

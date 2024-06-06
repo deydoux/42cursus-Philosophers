@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/06 17:02:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 17:19:51 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,22 @@ typedef struct s_safe_thread
 
 typedef struct s_philo
 {
-	_Atomic bool	exit;
-	_Atomic size_t	die_time;
-	bool			limit_eat;
-	sem_t			*done_sem;
-	sem_t			*exit_sem;
-	sem_t			*exit_change_sem;
-	sem_t			*forks_sem;
-	sem_t			*write_sem;
-	size_t			id;
-	size_t			start_time;
-	unsigned int	eat_count;
-	unsigned int	must_eat;
-	unsigned int	n;
-	useconds_t		time_to_die;
-	useconds_t		time_to_eat;
-	useconds_t		time_to_sleep;
+	_Atomic bool			exit;
+	_Atomic size_t			die_time;
+	_Atomic unsigned int	eat_count;
+	bool					limit_eat;
+	sem_t					*done_sem;
+	sem_t					*exit_change_sem;
+	sem_t					*exit_sem;
+	sem_t					*forks_sem;
+	sem_t					*write_sem;
+	size_t					id;
+	size_t					start_time;
+	unsigned int			must_eat;
+	unsigned int			n;
+	useconds_t				time_to_die;
+	useconds_t				time_to_eat;
+	useconds_t				time_to_sleep;
 }	t_philo;
 
 typedef struct s_table
