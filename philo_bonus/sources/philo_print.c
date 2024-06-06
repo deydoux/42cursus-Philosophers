@@ -6,11 +6,21 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:40:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 22:42:58 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 17:05:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static bool	print_die(t_philo *philo, size_t time)
+{
+	while (philo->n--)
+		sem_post(philo->done_sem);
+	printf(FORMAT_DIE, time - philo->start_time, philo->id);
+	usleep(philo->time_to_die);
+	sem_post(philo->write_sem);
+	return (true);
+}
 
 bool	philo_print(t_philo *philo, char *format, size_t *time_ptr)
 {
@@ -27,14 +37,7 @@ bool	philo_print(t_philo *philo, char *format, size_t *time_ptr)
 	sem_post(philo->exit_change_sem);
 	time = get_ms_time();
 	if (time >= philo->die_time)
-	{
-		while (philo->n--)
-			sem_post(philo->done_sem);
-		printf(FORMAT_DIE, time - philo->start_time, philo->id);
-		usleep(philo->time_to_die);
-		sem_post(philo->write_sem);
-		return (true);
-	}
+		return (print_die(philo, time));
 	else if (format)
 		printf(format, time - philo->start_time, philo->id);
 	sem_post(philo->write_sem);
