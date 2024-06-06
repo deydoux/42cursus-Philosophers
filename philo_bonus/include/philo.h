@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 22:36:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 16:59:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ bool	init_sems(t_philo *philo);
 bool	parse_args(int argc, char **argv, t_philo *philo);
 bool	philo_print(t_philo *philo, char *format, size_t *time_ptr);
 size_t	get_ms_time(void);
+void	close_sems(t_philo philo);
 void	*routine(t_philo *philo);
 void	destroy_table(t_table *table);
 void	init_threads(t_philo *philo);

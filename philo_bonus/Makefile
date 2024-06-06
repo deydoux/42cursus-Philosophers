@@ -1,6 +1,7 @@
 NAME				=	philo_bonus
 
-SOURCES				=	destroy_table.c			\
+SOURCES				=	close_sems.c			\
+						destroy_table.c			\
 						get_ms_time.c			\
 						init_philo.c			\
 						init_sems.c				\

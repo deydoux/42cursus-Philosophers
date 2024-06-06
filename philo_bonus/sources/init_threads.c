@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:59:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/05 11:32:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/06 17:00:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ void	init_threads(t_philo *philo)
 	destroy_thread(threads[0]);
 	destroy_thread(threads[1]);
 	sem_post(philo->done_sem);
-	sem_close(philo->done_sem);
-	sem_close(philo->exit_sem);
-	sem_close(philo->exit_change_sem);
-	sem_close(philo->forks_sem);
-	sem_close(philo->write_sem);
+	close_sems(*philo);
 	exit(EXIT_SUCCESS);
 }
