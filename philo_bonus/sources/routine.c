@@ -66,10 +66,10 @@ static bool	init_routine(t_philo *philo)
 		sem_post(philo->done_sem);
 		return (true);
 	}
-	if (philo->id <= philo->n / 2)
-		odd_routine(philo);
-	else
+	if (philo->id % 2)
 		even_routine(philo);
+	else
+		odd_routine(philo);
 	return (false);
 }
 
