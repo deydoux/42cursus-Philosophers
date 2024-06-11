@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:36:35 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/02 22:29:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/11 14:45:25 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ void	*routine(t_philo *philo)
 			break ;
 		}
 		usleep(philo->time_to_sleep);
-		if (philo_print(philo, FORMAT_THINK, NULL) || eat_routine(philo))
+		if (philo_print(philo, FORMAT_THINK, NULL))
+			break ;
+		if (philo->n % 2)
+			usleep(1000);
+		if (eat_routine(philo))
 			break ;
 	}
 	return (NULL);
