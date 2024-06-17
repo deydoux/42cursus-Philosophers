@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/06 17:19:51 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/17 12:28:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define FORMAT_THINK			"%zu %zu is thinking\n"
 # define MAX_ARGC				6
 # define MIN_ARGC				5
+# define ODD_USLEEP				1000
 # define SEM_NAME_DONE			"/philo_done"
 # define SEM_NAME_EXIT			"/philo_exit"
 # define SEM_NAME_EXIT_CHANGE	"/philo_exit_change"
