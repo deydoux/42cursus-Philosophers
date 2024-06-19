@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:22:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/05/18 23:23:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:40:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	philo_sleep(useconds_t time, t_philo *philo)
 
 	current_time = get_ms_time();
 	if (current_time + time / 1000 >= philo->die_time)
-		time = philo->die_time - current_time;
+		time = (philo->die_time - current_time) * 1000;
 	usleep(time);
 }
