@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 06:24:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/17 12:28:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:44:36 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define SEM_NAME_EXIT_CHANGE	"/philo_exit_change"
 # define SEM_NAME_FORKS			"/philo_forks"
 # define SEM_NAME_WRITE			"/philo_write"
-# define USAGE "Usage: ./philo_bonus number_of_philosophers time_to_die\
+# define USAGE "Usage: ./philo_bonus number_of_philosophers time_to_die \
 time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"
 
 typedef struct s_safe_thread
