@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:40:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/06/06 17:05:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/06/19 17:21:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static bool	print_die(t_philo *philo, size_t time)
 	printf(FORMAT_DIE, time - philo->start_time, philo->id);
 	usleep(philo->time_to_die);
 	sem_post(philo->write_sem);
+	sem_post(philo->forks_sem);
 	return (true);
 }
 
