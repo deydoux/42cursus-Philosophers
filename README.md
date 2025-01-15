@@ -27,7 +27,7 @@ The Philosophers project challenges students to solve the **Dining Philosophers 
 - Performance optimization
 - Time management in concurrent programming
 
-## Credits
+## References
 <img align="right" src="https://github.com/user-attachments/assets/d8f721a0-9c5a-4dfa-bd66-6ef23a5131c0">
 
 - [42](https://42.fr/)
